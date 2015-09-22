@@ -1,0 +1,24 @@
+﻿using System.Web.Mvc;
+
+namespace SciaDesignFormsWeb.Areas.SectionCheck
+{
+    public class SectionCheckAreaRegistration : AreaRegistration 
+    {
+        public override string AreaName 
+        {
+            get 
+            {
+                return "SectionCheck";
+            }
+        }
+
+        public override void RegisterArea(AreaRegistrationContext context) 
+        {
+            context.MapRoute(
+                "SectionCheck_default",
+                "SectionCheck/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
