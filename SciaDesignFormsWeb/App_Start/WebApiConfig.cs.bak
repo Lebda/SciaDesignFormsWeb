@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
-using SciaDesignFormsWeb.Infrastructure.IoC;
 
 namespace SciaDesignFormsWeb
 {
@@ -10,7 +9,6 @@ namespace SciaDesignFormsWeb
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            config.DependencyResolver = new NinjectResolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -20,8 +18,6 @@ namespace SciaDesignFormsWeb
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-}
+        }
     }
 }
