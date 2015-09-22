@@ -1,0 +1,23 @@
+﻿
+<style>
+    canvas
+    {
+        border: thin solid black;
+        margin: 4px;
+    }
+</style>
+
+<div ng-controller="documentCtrl">
+    <button class="btn" ng-click="loadDocument(calculationContext)">
+        Load document
+    </button>
+    <button class="btn" ng-click="clearDocument()">
+        Clear document
+    </button>
+    <br/>
+    <canvas id="canvas" ng-show="showCanvas" preload="auto">
+        Your browser doesn't support the
+        <code>canvas</code> element
+    </canvas>
+    
+</div>

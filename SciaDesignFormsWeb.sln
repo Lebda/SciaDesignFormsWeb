@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0CB91D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Areas_Help", "..\LebSoftCommon\Areas_Help\Areas_Help.csproj", "{E02F6E1C-8EF4-4CFF-B7E7-F1C35FAA1A27}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{04B88C4D-3CD2-426C-85EA-96C3A225CD54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionCheckClient", "SectionCheckClient\SectionCheckClient.csproj", "{571A7598-3E0B-4938-A72B-2421999D0C8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,12 @@ Global
 		{E02F6E1C-8EF4-4CFF-B7E7-F1C35FAA1A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E02F6E1C-8EF4-4CFF-B7E7-F1C35FAA1A27}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E02F6E1C-8EF4-4CFF-B7E7-F1C35FAA1A27}.Release|x86.ActiveCfg = Release|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571A7598-3E0B-4938-A72B-2421999D0C8E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +64,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5A06566A-56BF-4EA5-B870-C880BDAC1A38} = {0CB91DBF-CB14-499C-902D-FD830DC75935}
 		{E02F6E1C-8EF4-4CFF-B7E7-F1C35FAA1A27} = {0CB91DBF-CB14-499C-902D-FD830DC75935}
+		{571A7598-3E0B-4938-A72B-2421999D0C8E} = {04B88C4D-3CD2-426C-85EA-96C3A225CD54}
 	EndGlobalSection
 EndGlobal
