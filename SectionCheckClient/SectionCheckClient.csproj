@@ -57,13 +57,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)App_Start\*.*" "$(TargetDir)Client" /Y/D/E
-xcopy "$(ProjectDir)\Controllers\*.*" "$(TargetDir)Client" /Y/D/E
-xcopy "$(ProjectDir)\Scripts\*.*" "$(TargetDir)Client" /Y/D/E
-xcopy "$(ProjectDir)\ViewModels\*.*" "$(TargetDir)Client" /Y/D/E
-xcopy "$(ProjectDir)\Views\*.*" "$(TargetDir)Client" /Y/D/E
-
-xcopy "$(TargetDir)Client\*.*" "$(SolutionDir)SciaDesignFormsWeb\Areas\SectionCheck\Client" /Y/D/E</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)App_Start\*.*" "$(ProjectDir)bin\Client" /Y/D/E
+xcopy "$(ProjectDir)Controllers\*.*" "$(ProjectDir)bin\Client" /Y/D/E
+xcopy "$(ProjectDir)Scripts\*.*" "$(ProjectDir)bin\Client" /Y/D/E
+xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client" /Y/D/E
+xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client" /Y/D/E</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
