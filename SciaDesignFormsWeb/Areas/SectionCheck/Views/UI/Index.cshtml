@@ -3,5 +3,16 @@
     ViewBag.Title = "Section check";
 }
 
-<h2>Prdel</h2>
+@section scripts
+{   
+    <script src="~/Areas/SectionCheck/Scripts/appSectionCheck.js"></script>
+    <script src="~/Areas/SectionCheck/Client/mainController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/calculationContext.js"></script>
+    <script src="~/Areas/SectionCheck/Client/documentController.js"></script>
+}
 
+<div ng-app="SectionCheck">
+    <div ng-controller="appCtrl">
+        <ng-include src="mainView()"></ng-include>
+    </div>
+</div>

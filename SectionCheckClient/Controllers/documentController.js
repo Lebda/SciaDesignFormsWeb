@@ -1,5 +1,4 @@
 ﻿angular.module("SectionCheck")
-    .constant("calculationDocumentUrl", '/Calculation/api/nrest/Document/')
     .controller("documentCtrl", function ($scope, $http, calculationDocumentUrl)
     {
         $scope.calculationContext = new CalculationContext(2, 1, "eBrief");

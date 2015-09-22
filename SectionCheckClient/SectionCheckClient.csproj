@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,12 +45,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Start\appSectionCheck.js" />
     <Content Include="Controllers\documentController.js" />
+    <Content Include="Controllers\mainController.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="ViewModels\calculationContext.js" />
+    <Content Include="Views\mainView.html" />
     <Content Include="Views\documentView.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -58,7 +63,7 @@ xcopy "$(ProjectDir)\Scripts\*.*" "$(TargetDir)Client" /Y/D/E
 xcopy "$(ProjectDir)\ViewModels\*.*" "$(TargetDir)Client" /Y/D/E
 xcopy "$(ProjectDir)\Views\*.*" "$(TargetDir)Client" /Y/D/E
 
-xcopy "$(TargetDir)Client\*.*" "$(SolutionDir)SciaDesignFormsWeb\Clients\SectionCheck" /Y/D/E</PostBuildEvent>
+xcopy "$(TargetDir)Client\*.*" "$(SolutionDir)SciaDesignFormsWeb\Areas\SectionCheck\Client" /Y/D/E</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

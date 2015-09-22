@@ -185,6 +185,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Calculation\CalculationAreaRegistration.cs" />
+    <Compile Include="Areas\Calculation\Controllers\DocumentController.cs" />
     <Compile Include="Areas\SectionCheck\Controllers\UIController.cs" />
     <Compile Include="Areas\SectionCheck\SectionCheckAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -201,6 +203,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\SectionCheck\Scripts\appSectionCheck.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -250,6 +253,7 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Areas\Calculation\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1045,8 +1049,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Calculation\Models\" />
+    <Folder Include="Areas\Calculation\Views\Shared\" />
+    <Folder Include="Areas\SectionCheck\Client\" />
     <Folder Include="Areas\SectionCheck\Models\" />
-    <Folder Include="Clients\SectionCheck\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
