@@ -5,27 +5,26 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using SdfCalculationService.Abstract.Document;
-using SdfCalculationService.Abstract.HttpDocument;
-using SdfCalculationService.Concrete.Shared;
+using SdfCalculationService.Abstract.Calculation;
+using SdfCalculationService.Abstract.HttpCalculation;
 
 namespace SciaDesignFormsWeb.Areas.Calculation.Controllers
 {
-    public class DocumentController : ApiController
+    public class CalculationDataController : ApiController
     {
-        public DocumentController(IDocumentPicturesCreator creator)
+        public CalculationDataController(ICalculationDataCreator creator)
         {
             m_creator = creator;
         }
 
         #region MEMBERS
-        readonly IDocumentPicturesCreator m_creator;
+        readonly ICalculationDataCreator m_creator;
         #endregion
 
-        public HttpResponseMessage Get([FromUri]CalculationContext context)
+        public HttpResponseMessage Get()
         {
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            IWebApiDocument content = m_creator.GetWebApiDocument(context);
+            IWebApiCalculationData content = m_creator.GetWebApi();
             result.Content = new ObjectContent(content.GetType(), content, new JsonMediaTypeFormatter());
             result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
             return result;

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using SdfCalculationService.Abstract;
+using SdfCalculationService.Abstract.Shared;
 using SdfCalculationService.General;
 
-namespace SdfCalculationService.Concrete
+namespace SdfCalculationService.Concrete.Shared
 {
     public class CalculationContext : ICalculationContext
     {

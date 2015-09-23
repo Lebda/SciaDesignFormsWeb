@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using SdfCalculationService.Abstract;
+using SdfCalculationService.Abstract.Document;
 
-namespace SdfCalculationService.Concrete
+namespace SdfCalculationService.Concrete.Document
 {
     class PictureData : IPictureData
     {

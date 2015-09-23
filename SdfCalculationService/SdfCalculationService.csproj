@@ -69,20 +69,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\CalculationContext.cs" />
+    <Compile Include="Abstract\Calculation\ICalculationDataCreator.cs" />
+    <Compile Include="Abstract\HttpCalculation\IWebApiCheckData.cs" />
+    <Compile Include="Abstract\HttpCalculation\IWebApiChecksData.cs" />
+    <Compile Include="Concrete\Calculation\CalculationDataCreator.cs" />
+    <Compile Include="Abstract\HttpCalculation\IWebApiCalculationData.cs" />
+    <Compile Include="Concrete\HttpCalculation\WebApiCalculationData.cs" />
+    <Compile Include="Concrete\HttpCalculation\WebApiCheckData.cs" />
+    <Compile Include="Concrete\HttpCalculation\WebApiChecksData.cs" />
+    <Compile Include="Concrete\Shared\CalculationContext.cs" />
     <Compile Include="Concrete\CheckValueCalculator.cs" />
     <Compile Include="Abstract\ICheckValueCalculator.cs" />
-    <Compile Include="Concrete\DocumentPictureContext.cs" />
-    <Compile Include="Concrete\DocumentPicturesCreator.cs" />
-    <Compile Include="Abstract\IDocumentPictureContext.cs" />
-    <Compile Include="Abstract\IPictureData.cs" />
-    <Compile Include="Concrete\IDocumentPicturesCreator.cs" />
-    <Compile Include="Concrete\PictureData.cs" />
+    <Compile Include="Concrete\Document\DocumentPictureContext.cs" />
+    <Compile Include="Concrete\Document\DocumentPicturesCreator.cs" />
+    <Compile Include="Abstract\Document\IDocumentPictureContext.cs" />
+    <Compile Include="Abstract\Document\IPictureData.cs" />
+    <Compile Include="Abstract\HttpDocument\IWebApiDocument.cs" />
+    <Compile Include="Abstract\HttpDocument\IWebApiPictureData.cs" />
+    <Compile Include="Abstract\HttpDocument\IWebApiPictureContext.cs" />
+    <Compile Include="Abstract\Document\IDocumentPicturesCreator.cs" />
+    <Compile Include="Concrete\Document\PictureData.cs" />
     <Compile Include="Concrete\HttpDocument\WebApiDocument.cs" />
     <Compile Include="Concrete\HttpDocument\WebApiPictureContext.cs" />
     <Compile Include="Concrete\HttpDocument\WebApiPictureData.cs" />
     <Compile Include="General\Enums.cs" />
-    <Compile Include="Abstract\ICalculationContext.cs" />
+    <Compile Include="Abstract\Shared\ICalculationContext.cs" />
     <Compile Include="Infrastructure\NinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

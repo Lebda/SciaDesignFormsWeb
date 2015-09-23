@@ -4,20 +4,27 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using Ioc_Help.Abstract;
-using SdfCalculationService.Abstract;
+using SdfCalculationService.Abstract.Document;
+using SdfCalculationService.Abstract.HttpDocument;
+using SdfCalculationService.Abstract.Shared;
 using SdfCalculationService.Concrete.HttpDocument;
 
-namespace SdfCalculationService.Concrete
+namespace SdfCalculationService.Concrete.Document
 {
     public class DocumentPicturesCreator : IDocumentPicturesCreator
     {
-        public DocumentPicturesCreator(IResolver<IDocumentPictureContext> resDocumentPictureContext)
+        public DocumentPicturesCreator(
+            IResolver<IDocumentPictureContext> resDocumentPictureContext,
+            IResolver<IWebApiDocument> resWebApiDocument
+            )
         {
+            m_resWebApiDocument = resWebApiDocument;
             m_resDocumentPictureContext = resDocumentPictureContext;
         }
 
         #region MEMBERS
         readonly IResolver<IDocumentPictureContext> m_resDocumentPictureContext;
+        readonly IResolver<IWebApiDocument> m_resWebApiDocument;
         #endregion
 
         #region INTERFACE
@@ -35,9 +42,9 @@ namespace SdfCalculationService.Concrete
             retval.Base64String = Convert.ToBase64String(retval.BinaryData);
             return retval;
         }
-        public WebApiDocument GetWebApiDocument(ICalculationContext context)
+        public IWebApiDocument GetWebApiDocument(ICalculationContext context)
         {
-            WebApiDocument retVal = new WebApiDocument();
+            IWebApiDocument retVal = m_resWebApiDocument.Resolve();
             string picturePath = @"C:\Users\jlebduska\Documents\Visual Studio 2013\Projects\SectionCheckWeb\SdfCalculationService\DocumentPictures";
             retVal.Pictures.Add(GetPictureWebApi(Path.Combine(picturePath, "img_1.gif"), ImageFormat.Gif, 651.0154, 415.0121, -20.00135, -20.00675));
             retVal.Pictures.Add(GetPictureWebApi(Path.Combine(picturePath, "img_2.gif"), ImageFormat.Gif, 600.9837, 85.99323, -0.9915682, 403.0013));

@@ -1,6 +1,6 @@
-namespace SdfCalculationService.Abstract
+namespace SdfCalculationService.Abstract.HttpDocument
 {
-    public interface IPictureData
+    public interface IWebApiPictureData
     {
         double BoundsWidth { get; set; }
         double BoundsHeight { get; set; }

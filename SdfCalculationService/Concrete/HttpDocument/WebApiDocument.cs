@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SdfCalculationService.Abstract.HttpDocument;
 
 namespace SdfCalculationService.Concrete.HttpDocument
 {
-    public class WebApiDocument
+    class WebApiDocument : IWebApiDocument
     {
         public WebApiDocument()
         {
-            Pictures = new List<WebApiPictureContext>();
+            Pictures = new List<IWebApiPictureContext>();
             CanvasWidth = 0.0;
             CanvasHeight = 0.0;
             CanvasOffsetHeight = 100.0;
@@ -16,7 +17,7 @@ namespace SdfCalculationService.Concrete.HttpDocument
         }
 
         #region PROPERTIES
-        public ICollection<WebApiPictureContext> Pictures { get; set; }
+        public ICollection<IWebApiPictureContext> Pictures { get; set; }
         public double CanvasWidth { get; set; }
         public double CanvasHeight { get; set; }
         public double CanvasOffsetHeight { get; set; }

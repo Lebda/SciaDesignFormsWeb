@@ -1,6 +1,6 @@
 using SdfCalculationService.General;
 
-namespace SdfCalculationService.Abstract
+namespace SdfCalculationService.Abstract.Shared
 {
     public interface ICalculationContext
     {

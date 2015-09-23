@@ -1,4 +1,5 @@
 using System;
+using SdfCalculationService.Abstract.Shared;
 
 namespace SdfCalculationService.Abstract
 {

@@ -48,10 +48,13 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controllers\checkTableController.js" />
     <Content Include="Controllers\documentController.js" />
     <Content Include="Controllers\mainController.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="ViewModels\calculationContext.js" />
+    <Content Include="ViewModels\checkViewModel.js" />
+    <Content Include="Views\checkTableView.html" />
     <Content Include="Views\mainView.html" />
     <Content Include="Views\documentView.html" />
   </ItemGroup>

@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using SdfCalculationService.Abstract;
+using SdfCalculationService.Abstract.Document;
 
-namespace SdfCalculationService.Concrete
+namespace SdfCalculationService.Concrete.Document
 {
     public class DocumentPictureContext : IDocumentPictureContext
     {

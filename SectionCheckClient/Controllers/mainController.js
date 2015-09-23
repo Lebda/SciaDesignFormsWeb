@@ -5,4 +5,8 @@
         {
             return sectionCheckClientFolder + 'documentView.html';
         };
+        $scope.checkTableView = function ()
+        {
+            return sectionCheckClientFolder + 'checkTableView.html';
+        };
     });

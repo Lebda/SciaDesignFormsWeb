@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using SdfCalculationService.Abstract;
+using SdfCalculationService.Abstract.Shared;
 
 namespace SdfCalculationService.Concrete
 {

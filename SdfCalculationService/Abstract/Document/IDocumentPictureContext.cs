@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.IO;
 
-namespace SdfCalculationService.Abstract
+namespace SdfCalculationService.Abstract.Document
 {
     public interface IDocumentPictureContext
     {
