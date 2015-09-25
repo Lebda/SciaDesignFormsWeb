@@ -48,6 +48,7 @@
     <Folder Include="App_Start\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\main.css" />
     <Content Include="Controllers\checkTableController.js" />
     <Content Include="Controllers\documentController.js" />
     <Content Include="Controllers\mainController.js" />
@@ -68,7 +69,8 @@
 xcopy "$(ProjectDir)Controllers\*.*" "$(ProjectDir)bin\Client" /Y/D/E
 xcopy "$(ProjectDir)Scripts\*.*" "$(ProjectDir)bin\Client" /Y/D/E
 xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client" /Y/D/E</PreBuildEvent>
+xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client" /Y/D/E
+xcopy "$(ProjectDir)Content\*.*" "$(ProjectDir)bin\Client" /Y/D/E</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

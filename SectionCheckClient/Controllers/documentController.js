@@ -3,12 +3,12 @@
 angular.module("SectionCheck")
     .controller("documentCtrl", function ($scope, $http, calculationDocumentUrl)
     {
-        $scope.calculationContext = new CalculationContextGetSet(2, 1, "eBrief");
+        $scope.calculationContext = new CalculationContext(2, 1, "eBrief");
         $scope.showCanvas = false;
 
         $scope.loadDocument = function (calcContext)
         {
-            var url4Job = calculationDocumentUrl + 'Get/' + calcContext.clcID + '/' + calcContext.combiID + '/' + calcContext.outPutType;
+            var url4Job = calculationDocumentUrl + 'Get/' + calcContext.m_clcID + '/' + calcContext.m_combiID + '/' + calcContext.m_outPutType;
             $http.get(url4Job)
                 .success(function (data)
                 {
