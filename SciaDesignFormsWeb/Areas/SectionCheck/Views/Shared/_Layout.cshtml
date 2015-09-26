@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Scia online", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,7 +29,9 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Section check</p>
+            <p>
+                <img src="~/Content/Images/XEP_SectionCheck.png" width="128" alt="Section check"> &nbsp&nbsp &copy; @DateTime.Now.Year - Section check
+            </p>
         </footer>
     </div>
 
