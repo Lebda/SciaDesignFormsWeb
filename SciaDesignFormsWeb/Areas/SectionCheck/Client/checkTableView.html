@@ -1,10 +1,5 @@
 ﻿
 <style>
-    canvas
-    {
-        border: thin solid black;
-        margin: 4px;
-    }
     #headRow
     {
         background: #28B7EF;
@@ -22,27 +17,10 @@
     {
         background-color: lightblue;
     }
-
-    .choosable
-    {
-        cursor: pointer;
-    }
-    .choice
-    {
-        border-color: #ccc;
-        padding: 1em;
-        border-width: 3px;
-        border-style: solid;
-        border-radius: 10px; 
-    }
-    .choice.active
-    {
-        background-color: lightcoral;
-        border-color: #1c94c6;
-    }
 </style>
     
 <div ng-controller="checkTableCtrl">
+    <br />
     <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">Available checks</div>
@@ -73,7 +51,7 @@
             <tbody>
                 <tr ng-repeat="item in items"
                     ng-click="setSelectedRowIndex($index);"
-                    ng-class='{selectedTableLine: $index==selectedRowIndex}'>
+                    ng-class='{evenTableLine: $odd, oddTableLine: $even, selectedTableLine: $index==selectedRowIndex}'>
                     <td>
                         <input type="checkbox" ng-model="item.isOn" aria-label="Select check for calculation">
                     </td>

@@ -49,41 +49,4 @@ angular.module("SectionCheck")
         {
             $scope.items.length = 0;
         }
-    })
-    .directive('choice', function ()
-    {
-        return {
-            restrict: 'A',
-            scope:
-            { 
-                'choice': '=choice', //two way binding
-                'value': '=value' //evaluate expression
-            },
-            link: function($scope, elem, attrs)
-            {
-                console.log($scope);
-                console.log(attrs);
-                
-                debugger;
-                $scope.$watch("choice", 
-                              function (value)
-                              {
-                                  console.log(value == $scope.choice);
-                                  elem.toggleClass('active',
-                                                   value === $scope.value);
-                              });
-                elem.addClass('choosable');
-                elem.bind('click', function()
-                {
-                    $scope.$apply(function()
-                    {
-                        $scope.choice = $scope.value;
-                    });
-                }); 
-                elem.on('$destroy', function()
-                {
-                    //cleanup
-                });
-            }
-        }
     });

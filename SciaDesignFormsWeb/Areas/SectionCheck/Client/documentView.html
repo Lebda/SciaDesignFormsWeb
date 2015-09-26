@@ -1,23 +1,47 @@
 ﻿
 <style>
-    canvas
+    /*canvas
     {
-        border: thin solid black;
-        margin: 4px;
-    }
+    border: thin solid rgba(0, 0, 0, 0);
+    margin: 0px;
+    }*/
 </style>
 
 <div ng-controller="documentCtrl">
-    <button class="btn" ng-click="loadDocument(calculationContext)">
-        Load document
-    </button>
-    <button class="btn" ng-click="clearDocument()">
-        Clear document
-    </button>
     <br/>
-    <canvas id="canvas" ng-show="showCanvas" preload="auto">
-        Your browser doesn't support the
-        <code>canvas</code> element
-    </canvas>
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Document</div>
+        <div class="panel-body">
+            <button class="btn btn-primary" ng-click="loadDocument(calculationContext)">
+                Load document
+            </button>
+            <button class="btn btn-primary" ng-click="clearDocument()">
+                Clear document
+            </button>
+        </div>
 
+        <!--<canvas id="canvas" ng-show="showCanvas" preload="auto">
+            Your browser doesn't support the
+            <code>canvas</code> element
+        </canvas>-->
+
+        <div class="container">
+            <div class="row">
+                <!--<div class="col-md-1"> 
+
+                </div>-->
+                <div class="col-md-12">
+                    <canvas id="canvas" ng-show="showCanvas" preload="auto">
+                        Your browser doesn't support the
+                        <code>canvas</code> element
+                    </canvas>
+                </div>
+                <!--<div class="col-md-1">
+
+                </div>-->
+            </div>
+        </div>
+
+    </div>
 </div>
