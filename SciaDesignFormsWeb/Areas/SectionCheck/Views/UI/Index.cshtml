@@ -2,33 +2,16 @@
 @{
     ViewBag.Title = "Section check";
 }
-
 @section scripts
-{   
-    @*<link href="~/Scripts/Kendo/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="~/Scripts/Kendo/styles/kendo.blueopal.min.css" rel="stylesheet" /> 
-    <script src="~/Scripts/Kendo/js/kendo.all.min.js"></script>*@
-
-    @*UI grid*@
-    @*<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-    <script src="http://ui-grid.info/release/ui-grid.js"></script>
-    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
-    <link href="~/Areas/SectionCheck/Client/main.css" rel="stylesheet" /*@>
-
-    @*Section check client*@
-    <script src="~/Areas/SectionCheck/Scripts/appSectionCheck.js"></script>
-    <script src="~/Areas/SectionCheck/Client/mainController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/calculationContext.js"></script>
-    <script src="~/Areas/SectionCheck/Client/checkViewModel.js"></script>
-    <script src="~/Areas/SectionCheck/Client/documentController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/kendoTestController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/checkTableController.js"></script>
+{
+    <script src="~/Areas/SectionCheck/Client/Modules/sectionCheckApplicationModule.js"></script>
+    <script src="~/Areas/SectionCheck/Scripts/sectionCheckApplicationModuleBootstrap.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckApplicationController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckMainController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCalculationContext.js"></script>
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCheckViewModel.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckDocumentController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckCheckTableController.js"></script>
 }
 
-<div ng-app="SectionCheck">
-    <div ng-controller="appCtrl">
-        <ng-include src="mainView()"></ng-include>
-    </div>
-</div>
+@Html.Action("SectionCheckIntegrationPartial", "UI")

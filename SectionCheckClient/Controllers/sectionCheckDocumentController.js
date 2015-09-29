@@ -1,7 +1,7 @@
 ﻿/// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\sectioncheckclient\viewmodels\calculationcontext.js" />
 
-angular.module("SectionCheck")
-    .controller("documentCtrl", function ($scope, $http, calculationDocumentUrl)
+angular.module("sectionCheckApplicationModule")
+    .controller("sectionCheckDocumentController", function ($scope, $http, calculationDocumentUrl)
     {
         $scope.calculationContext = new CalculationContext(2, 1, "eBrief");
         $scope.showCanvas = false;

@@ -1,8 +1,8 @@
 ﻿/// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\sectioncheckclient\viewmodels\calculationcontext.js" />
 /// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\sectioncheckclient\viewmodels\checkviewmodel.js" />
 
-angular.module("SectionCheck")
-    .controller("checkTableCtrl", function ($scope, $http, calculationDataUrl)
+angular.module("sectionCheckApplicationModule")
+    .controller("sectionCheckCheckTableController", function ($scope, $http, calculationDataUrl)
     {
         $scope.items = new Array();
         $scope.selectedRowIndex = -1;

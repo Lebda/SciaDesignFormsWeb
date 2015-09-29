@@ -45,19 +45,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Start\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Modules\sectionCheckApplicationModule.js" />
     <Content Include="Content\main.css" />
-    <Content Include="Controllers\checkTableController.js" />
-    <Content Include="Controllers\documentController.js" />
-    <Content Include="Controllers\mainController.js" />
+    <Content Include="Controllers\sectionCheckCheckTableController.js" />
+    <Content Include="Controllers\sectionCheckDocumentController.js" />
+    <Content Include="Controllers\sectionCheckMainController.js" />
+    <Content Include="Controllers\sectionCheckApplicationController.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="ViewModels\calculationContext.js" />
-    <Content Include="ViewModels\checkViewModel.js" />
-    <Content Include="Views\checkTableView.html" />
-    <Content Include="Views\mainView.html" />
-    <Content Include="Views\documentView.html" />
+    <Content Include="ViewModels\sectionCheckCalculationContext.js" />
+    <Content Include="ViewModels\sectionCheckCheckViewModel.js" />
+    <Content Include="Views\sectionCheckCheckTableView.html" />
+    <Content Include="Views\sectionCheckMainView.html" />
+    <Content Include="Views\sectionCheckDocumentView.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SectionCheckIntegrationPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -65,12 +73,28 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>xcopy "$(ProjectDir)App_Start\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)Controllers\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)Scripts\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client" /Y/D/E
-xcopy "$(ProjectDir)Content\*.*" "$(ProjectDir)bin\Client" /Y/D/E</PreBuildEvent>
+    <PreBuildEvent>if not exist "$(ProjectDir)bin" mkdir "$(ProjectDir)bin"
+if not exist "$(ProjectDir)bin\Client" mkdir "$(ProjectDir)bin\Client"
+
+copy "$(ProjectDir)SectionCheckIntegrationPartial.cshtml" "$(ProjectDir)bin\Client\SectionCheckIntegrationPartial.cshtml"
+
+if not exist "$(ProjectDir)bin\Client\Modules" mkdir "$(ProjectDir)bin\Client\Modules"
+xcopy "$(ProjectDir)Modules\*.*" "$(ProjectDir)bin\Client\Modules" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Content" mkdir "$(ProjectDir)bin\Client\Content"
+xcopy "$(ProjectDir)Content\*.*" "$(ProjectDir)bin\Client\Content" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Controllers" mkdir "$(ProjectDir)bin\Client\Controllers"
+xcopy "$(ProjectDir)Controllers\*.*" "$(ProjectDir)bin\Client\Controllers" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Scripts" mkdir "$(ProjectDir)bin\Client\Scripts"
+xcopy "$(ProjectDir)Scripts\*.*" "$(ProjectDir)bin\Client\Scripts" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\ViewModels" mkdir "$(ProjectDir)bin\Client\ViewModels"
+xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client\ViewModels" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Views" mkdir "$(ProjectDir)bin\Client\Views"
+xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client\Views" /Y/D/E</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

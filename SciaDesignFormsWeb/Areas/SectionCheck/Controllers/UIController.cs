@@ -11,5 +11,10 @@ namespace SciaDesignFormsWeb.Areas.SectionCheck.Controllers
         {
             return View();
         }
+        [ChildActionOnly]
+        public ActionResult SectionCheckIntegrationPartial()
+        {
+            return PartialView();
+        }
     }
 }
