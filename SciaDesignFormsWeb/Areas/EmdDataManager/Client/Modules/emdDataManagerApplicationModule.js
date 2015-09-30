@@ -1,1 +1,1 @@
-﻿angular.module("emdDataManagerApplicationModule", []);
+﻿angular.module("emdDataManagerApplicationModule", ['ngFileUpload']);

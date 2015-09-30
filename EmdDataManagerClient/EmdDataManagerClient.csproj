@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controllers\emdDataManagerApplicationController.js" />
+    <Content Include="Controllers\emdDataManagerFileUploadController.js" />
     <Content Include="Controllers\emdDataManagerMainController.js" />
     <Content Include="Modules\emdDataManagerApplicationModule.js" />
+    <Content Include="Views\emdDataManagerFileUploadView.html" />
     <Content Include="Views\emdDataManagerMainView.html" />
   </ItemGroup>
   <ItemGroup>

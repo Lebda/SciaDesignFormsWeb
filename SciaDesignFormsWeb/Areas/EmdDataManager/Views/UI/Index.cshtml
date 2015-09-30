@@ -4,10 +4,13 @@
 }
 @section scripts
 {
+    @*<script src="~/Scripts/ng-file-upload/ng-file-upload-shim.js"></script>*@
+    <script src="~/Scripts/ng-file-upload/ng-file-upload.js"></script>
     <script src="~/Areas/EmdDataManager/Client/Modules/emdDataManagerApplicationModule.js"></script>
     <script src="~/Areas/EmdDataManager/Scripts/emdDataManagerApplicationModuleBootstrap.js"></script>
     <script src="~/Areas/EmdDataManager/Client/Controllers/emdDataManagerApplicationController.js"></script>
     <script src="~/Areas/EmdDataManager/Client/Controllers/emdDataManagerMainController.js"></script>
+    <script src="~/Areas/EmdDataManager/Client/Controllers/emdDataManagerFileUploadController.js"></script>
 }
 
 @Html.Action("ClientIntegrationPartial", "UI")

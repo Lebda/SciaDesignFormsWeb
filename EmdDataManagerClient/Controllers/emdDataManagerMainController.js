@@ -1,12 +1,8 @@
 ﻿angular.module("emdDataManagerApplicationModule")
     .controller("emdDataManagerMainController", function ($scope, clientIntegrationFolder)
     {
-        $scope.documentView = function ()
+        $scope.fileUploadView = function ()
         {
-            return clientIntegrationFolder + 'Views/sectionCheckDocumentView.html';
-        };
-        $scope.checkTableView = function ()
-        {
-            return clientIntegrationFolder + 'Views/sectionCheckCheckTableView.html';
+            return clientIntegrationFolder + 'Views/emdDataManagerFileUploadView.html';
         };
     });

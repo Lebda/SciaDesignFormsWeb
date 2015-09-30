@@ -1,0 +1,33 @@
+﻿<!--<div class="panel panel-info" ng-controller="emdDataManagerFileUploadController">
+<div class="panel-heading">
+<h3 class="panel-title">Esa model data file upload</h3>
+</div>
+<div class="panel-body">
+<input accept="zip/*"  type="file" ng-file-select="onFileSelect($files)" multiple>
+</div>
+</div>-->
+
+<div class="panel panel-info" ng-controller="emdDataManagerFileUploadController">
+    <div class="panel-heading">
+        <h3 class="panel-title">Esa model data file upload</h3>
+    </div>
+    <div class="panel-body">
+        <h4>Upload on file select</h4>
+        <button type="file" ngf-select="uploadFiles($file)"
+                ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
+            Select File
+        </button>
+        <br><br>
+        File:
+        <div style="font:smaller">
+            {{f.name}} {{f.$error}} {{f.$errorParam}} <br/>
+            <div ng-show="f.progress >= 0">
+                <div ng-bind="f.progress + '%'"></div>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+                </div>
+            </div>
+        </div>
+        {{errorMsg}}
+    </div>
+</div>
