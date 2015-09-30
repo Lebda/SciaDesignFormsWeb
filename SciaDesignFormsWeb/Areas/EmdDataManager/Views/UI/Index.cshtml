@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Esa model data manager";
+}
+@section scripts
+{
+    <script src="~/Areas/EmdDataManager/Client/Modules/emdDataManagerApplicationModule.js"></script>
+    <script src="~/Areas/EmdDataManager/Scripts/emdDataManagerApplicationModuleBootstrap.js"></script>
+    <script src="~/Areas/EmdDataManager/Client/Controllers/emdDataManagerApplicationController.js"></script>
+    <script src="~/Areas/EmdDataManager/Client/Controllers/emdDataManagerMainController.js"></script>
+}
+
+@Html.Action("ClientIntegrationPartial", "UI")
+

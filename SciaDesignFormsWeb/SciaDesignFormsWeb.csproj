@@ -188,6 +188,9 @@
     <Compile Include="Areas\Calculation\CalculationAreaRegistration.cs" />
     <Compile Include="Areas\Calculation\Controllers\CalculationDataController.cs" />
     <Compile Include="Areas\Calculation\Controllers\DocumentController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\EmdDataController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\UIController.cs" />
+    <Compile Include="Areas\EmdDataManager\EmdDataManagerAreaRegistration.cs" />
     <Compile Include="Areas\SectionCheck\Controllers\UIController.cs" />
     <Compile Include="Areas\SectionCheck\SectionCheckAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\EmdDataManager\Scripts\emdDataManagerApplicationModuleBootstrap.js" />
     <Content Include="Areas\SectionCheck\Scripts\appSectionCheck.js" />
     <Content Include="Areas\SectionCheck\Scripts\sectionCheckApplicationModuleBootstrap.js" />
     <Content Include="Content\Backup\bootstrap.css" />
@@ -265,6 +269,10 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Areas\Calculation\Views\web.config" />
     <Content Include="Areas\SectionCheck\Views\UI\Index.cshtml" />
+    <Content Include="Areas\EmdDataManager\Views\web.config" />
+    <Content Include="Areas\EmdDataManager\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\EmdDataManager\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\EmdDataManager\Views\UI\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1079,6 +1087,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Calculation\Models\" />
     <Folder Include="Areas\Calculation\Views\Shared\" />
+    <Folder Include="Areas\EmdDataManager\Client\" />
+    <Folder Include="Areas\EmdDataManager\Models\" />
     <Folder Include="Areas\SectionCheck\Client\" />
     <Folder Include="Areas\SectionCheck\Models\" />
   </ItemGroup>
@@ -1136,7 +1146,10 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)SectionCheckClient\bin\Client\*.*" "$(SolutionDir)SciaDesignFormsWeb\Areas\SectionCheck\Client" /Y/D/E
-copy "$(SolutionDir)SectionCheckClient\bin\Client\SectionCheckIntegrationPartial.cshtml" "$(SolutionDir)SciaDesignFormsWeb\Areas\SectionCheck\Views\UI\SectionCheckIntegrationPartial.cshtml"</PostBuildEvent>
+copy "$(SolutionDir)SectionCheckClient\bin\Client\ClientIntegrationPartial.cshtml" "$(SolutionDir)SciaDesignFormsWeb\Areas\SectionCheck\Views\UI\ClientIntegrationPartial.cshtml"
+
+xcopy "$(SolutionDir)EmdDataManagerClient\bin\Client\*.*" "$(SolutionDir)SciaDesignFormsWeb\Areas\EmdDataManager\Client" /Y/D/E
+copy "$(SolutionDir)EmdDataManagerClient\bin\Client\ClientIntegrationPartial.cshtml" "$(SolutionDir)SciaDesignFormsWeb\Areas\EmdDataManager\Views\UI\ClientIntegrationPartial.cshtml"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

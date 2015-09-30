@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Web.Mvc;
 
-namespace SciaDesignFormsWeb.Areas.SectionCheck.Controllers
+namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
     public class UIController : Controller
     {
-        // GET: SectionCheck/UI
+        // GET: EmdDataManager/UI
         public ActionResult Index()
         {
             return View();
