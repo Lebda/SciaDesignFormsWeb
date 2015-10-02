@@ -5,8 +5,9 @@ using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using SciaDesignFormsWeb.Infrastructure.IoC;
 using Areas_Help.AreaSelection;
+using SciaDesignFormsModel.DataContexts.SciaDesignForms;
+using SciaDesignFormsWeb.Infrastructure.IoC;
 
 namespace SciaDesignFormsWeb
 {
@@ -14,6 +15,9 @@ namespace SciaDesignFormsWeb
     {
         protected void Application_Start()
         {
+            var intializer = new SciaDesignFormsModel.Intializers.SciaDesignForms.SciaDesignFormsDbInitializer();
+            System.Data.Entity.Database.SetInitializer((System.Data.Entity.IDatabaseInitializer<SciaDesignFormsDb>)intializer);
+
             // DOne in advance
             GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerSelector), new AreaHttpControllerSelector(GlobalConfiguration.Configuration));
 
@@ -24,6 +28,7 @@ namespace SciaDesignFormsWeb
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             NinjectResolver resolver = (NinjectResolver)GlobalConfiguration.Configuration.DependencyResolver;
             resolver.AddBindings(Ioc_Help.Infrastructure.NinjectModule.Bindings);
+            resolver.AddBindings(SciaDesignFormsModel.Module.NinjectModule.Bindings);
             resolver.AddBindings(SdfCalculationService.Infrastructure.NinjectModule.Bindings);
             System.Web.Mvc.DependencyResolver.SetResolver((System.Web.Mvc.IDependencyResolver)resolver);
         }

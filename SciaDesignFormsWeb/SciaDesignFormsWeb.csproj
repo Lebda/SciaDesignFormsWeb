@@ -180,7 +180,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -201,7 +200,6 @@
     </Compile>
     <Compile Include="Infrastructure\IoC\NinjectResolver.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1112,9 +1110,21 @@
       <Project>{e02f6e1c-8ef4-4cff-b7e7-f1c35faa1a27}</Project>
       <Name>Areas_Help</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\LebSoftCommon\CommonLibrary\CommonLibrary.csproj">
+      <Project>{5ac5d78b-bebf-46c2-a2ec-c7b4e811e0cf}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LebSoftCommon\GenericRepository\GenericRepository.csproj">
+      <Project>{e8e499a9-c94a-49f4-ae19-7279846ecfa3}</Project>
+      <Name>GenericRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\LebSoftCommon\Ioc_Help\Ioc_Help.csproj">
       <Project>{5a06566a-56bf-4ea5-b870-c880bdac1a38}</Project>
       <Name>Ioc_Help</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SciaDesignFormsModel\SciaDesignFormsModel.csproj">
+      <Project>{00B79B63-81AD-4D2A-9DD8-71D8C001382B}</Project>
+      <Name>SciaDesignFormsModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\SdfCalculationService\SdfCalculationService.csproj">
       <Project>{a87823c6-e1f4-44a3-bba1-003fc8710275}</Project>
