@@ -123,6 +123,7 @@
     <Compile Include="Module\NinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\FileType.cs" />
+    <Compile Include="ViewModels\Identity\DbFileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -10,7 +10,7 @@ namespace SciaDesignFormsModel.Module
     {
         static public void Bindings(IKernel ninjectKernel)
         {
-            ninjectKernel.Bind<IDbFileRepository>().To<DbFileRepository>();
+            ninjectKernel.Bind<IDbFileRepository>().To<DbFileRepository>().InSingletonScope();
         }
     }
 }

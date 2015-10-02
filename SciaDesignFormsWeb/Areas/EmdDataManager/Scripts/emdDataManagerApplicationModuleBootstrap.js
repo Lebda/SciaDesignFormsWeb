@@ -1,3 +1,4 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .constant("emdDataUploadWebApiUrl", '/EmdDataManager/api/EmdData/Upload')
+    .constant("emdDataRestFullApiUrl", '/EmdDataManager/api/EmdFiles')
+    .constant("emdDataUploadWebApiUrl", '/EmdDataManager/api/EmdFiles/Upload')
     .constant("clientIntegrationFolder", '../../Areas/EmdDataManager/Client/');

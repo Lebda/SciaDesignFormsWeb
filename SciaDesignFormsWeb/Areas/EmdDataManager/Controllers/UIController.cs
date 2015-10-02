@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
+    [Authorize]
     public class UIController : Controller
     {
         // GET: EmdDataManager/UI

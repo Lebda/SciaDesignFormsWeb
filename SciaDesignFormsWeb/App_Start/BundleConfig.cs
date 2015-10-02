@@ -25,7 +25,8 @@ namespace SciaDesignFormsWeb
             bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-touch.js",
-                "~/Scripts/angular-animate.js"));
+                "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-resource.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",

@@ -1,0 +1,26 @@
+﻿<div ng-controller="emdDataManagerEmdFilesController">
+    <br />
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Available esa model data</div>
+        <div class="panel-body">
+            <!-- Table -->
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr id="headRow">
+                        <td>
+                            #
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in emdFiles">
+                        <td>
+                            {{item.FileName}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

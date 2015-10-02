@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -8,44 +9,36 @@ using System.Web;
 using System.Web.Http;
 using CommonLibrary.StreamHelp;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using SciaDesignFormsModel.Abstract;
 using SciaDesignFormsModel.Entities.Identity;
-using SciaDesignFormsModel.IndentityConfig;
+using SciaDesignFormsModel.ViewModels.Identity;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
-    public class EmdDataController : ApiController
+    public class EmdFilesController : ApiController
     {
-        public EmdDataController(ApplicationUserManager userManager, IDbFileRepository repo)
-        {
-            m_userManager = userManager;
-            m_repo = repo;
-        }
-        public EmdDataController(IDbFileRepository repo)
+        public EmdFilesController(IDbFileRepository repo)
         {
             m_repo = repo;
         }
         
         #region MEMBERS
         readonly IDbFileRepository m_repo;
-        ApplicationUserManager m_userManager;
         #endregion
 
         #region PROPERTIES
-        ApplicationUserManager UserManager
-        {
-            get
-            {
-                return m_userManager ?? System.Web.HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            set
-            {
-                m_userManager = value;
-            }
-        }
         #endregion
+
+        public IEnumerable<DbFileViewModel> GetEmdFiles()
+        {
+            return m_repo.DataQueryable().Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID});
+        }
+
+        public DbFileViewModel GetEmdFile(int id)
+        {
+            return m_repo.DataQueryable().Where(item => item.ID == id).Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID }).FirstOrDefault();
+        }
 
         
         [HttpPost] // This is from System.Web.Http, and not from System.Web.Mvc
@@ -64,9 +57,7 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
                     continue;
                 }
                 DbFile dbFile = new DbFile();
-                ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 dbFile.ApplicationUserID = User.Identity.GetUserId();
-                //dbFile.ApplicationUser = user;
                 // You would get hold of the inner memory stream here
                 Stream stream = ctnt.ReadAsStreamAsync().Result;
                 dbFile.Content = stream.StreamToByteArray();
@@ -142,7 +133,7 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
             var fileName = GetFileName(fileData);
             return JsonConvert.DeserializeObject(fileName).ToString();
         }
-        public string GetFileName(MultipartFileData fileData)
+        private string GetFileName(MultipartFileData fileData)
         {
             return fileData.Headers.ContentDisposition.FileName;
         }

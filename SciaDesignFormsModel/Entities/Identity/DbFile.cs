@@ -9,7 +9,6 @@ namespace SciaDesignFormsModel.Entities.Identity
 {
     public class DbFile
     {
-        //[Key]
         public int ID { get; set; }
         [StringLength(255)]
         public string FileName { get; set; }
@@ -17,9 +16,10 @@ namespace SciaDesignFormsModel.Entities.Identity
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
         public FileType FileType { get; set; }
+        public string Description { get; set; }
         [Required]
-        [ForeignKey("ApplicationUserID")]
         public string ApplicationUserID { get; set; }
+        [ForeignKey("ApplicationUserID")]
         public virtual IdentityUser ApplicationUser { get; set; }
     }
 }

@@ -5,4 +5,8 @@
         {
             return clientIntegrationFolder + 'Views/emdDataManagerFileUploadView.html';
         };
+        $scope.emdFilesView = function ()
+        {
+            return clientIntegrationFolder + 'Views/emdDataManagerEmdFilesView.html';
+        };
     });

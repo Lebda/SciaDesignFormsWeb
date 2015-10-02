@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using Areas_Help.AreaSelection;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager
@@ -12,10 +13,15 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager
         }
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+            //context.MapHttpRoute(
+            //    c_areaName + "_DefaultActionApi",
+            //    AreaName + "/api/{controller}/{action}/{id}",
+            //    new { area = AreaName, id = RouteParameter.Optional });
+
             context.MapHttpRoute(
                 c_areaName + "_DefaultApi",
                 AreaName + "/api/{controller}/{id}",
-                new { area = AreaName, id = UrlParameter.Optional });
+                new { area = AreaName, id = RouteParameter.Optional });
 
             context.MapRoute(
                 c_areaName + "_Default",

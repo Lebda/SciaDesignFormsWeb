@@ -1,6 +1,9 @@
 ﻿<div ng-controller="emdDataManagerMainController">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
+            <ng-include src="emdFilesView()"></ng-include>
+        </div>
+        <div class="col-md-6">
             <ng-include src="fileUploadView()"></ng-include>
         </div>
     </div>
