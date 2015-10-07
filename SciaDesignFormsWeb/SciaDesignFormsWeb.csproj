@@ -1052,7 +1052,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1097,6 +1099,7 @@
     <Folder Include="Areas\EmdDataManager\Models\" />
     <Folder Include="Areas\SectionCheck\Client\" />
     <Folder Include="Areas\SectionCheck\Models\" />
+    <Folder Include="Scripts\ui.bootstrap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

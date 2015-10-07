@@ -13,6 +13,10 @@ namespace SciaDesignFormsModel.DataContexts.SciaDesignForms
 
         }
 
+        #region PROPERTIES
+        #endregion
+
+        #region PROTECTED
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -20,15 +24,7 @@ namespace SciaDesignFormsModel.DataContexts.SciaDesignForms
 
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-
-            //modelBuilder.Entity<DbFile>()
-            //    .HasRequired(c => c.ApplicationUser)
-            //    .WithOptional()
-            //    .WillCascadeOnDelete(false);
-
         }
+        #endregion
     }
 }

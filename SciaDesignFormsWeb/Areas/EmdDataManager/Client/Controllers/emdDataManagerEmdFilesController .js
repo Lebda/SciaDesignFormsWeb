@@ -1,11 +1,17 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .controller("emdDataManagerEmdFilesController", function ($scope, $http, $resource, emdDataRestFullApiUrl)
+    .controller("emdDataManagerEmdFilesController", function ($scope, $http, $resource, emdDataRestFullApiUrl, emdDataManagerAddDeleteEmdFileService)
     {
         $scope.displayMode = "list";
         $scope.currentProduct = null;
         $scope.emdFiles = null;
  
         $scope.emdFilesResource = $resource(emdDataRestFullApiUrl + ":id", { id: "@id" });
+
+        // EVENTS
+        $scope.$on("emdFileAddDeleteEvent", function (event, args)
+        { // read again from databse
+            $scope.listEmdFiles();
+        });
  
         $scope.listEmdFiles = function ()
         {

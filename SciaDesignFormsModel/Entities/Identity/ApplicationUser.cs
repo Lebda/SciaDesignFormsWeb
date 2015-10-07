@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,7 +12,7 @@ namespace SciaDesignFormsModel.Entities.Identity
     {
         public ApplicationUser()
         {
-            DbFiles = new List<DbFile>(); 
+           // EmdFiles = new List<DbEmdFile>(); 
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -24,6 +23,9 @@ namespace SciaDesignFormsModel.Entities.Identity
             return userIdentity;
         }
 
-        public virtual ICollection<DbFile> DbFiles { get; set; }
+        #region NAVIGATIONS
+        //public virtual ICollection<DbEmdFile> EmdFiles { get; set; }
+        //public virtual DbEmdSelection EmdSelection { get; set; }
+        #endregion
     }
 }

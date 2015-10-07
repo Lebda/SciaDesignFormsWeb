@@ -84,6 +84,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -105,12 +106,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\DbFileRepository.cs" />
-    <Compile Include="Abstract\IDbFileRepository.cs" />
+    <Compile Include="Concrete\DbEmdFileRepository.cs" />
+    <Compile Include="Abstract\IDbEmdFileRepository.cs" />
+    <Compile Include="Concrete\DbEmdSelectionRepository.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileContext.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileMember.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileParser.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileContext.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileParser.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileSection.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileStrcture.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileMember.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileSection.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileStrcture.cs" />
+    <Compile Include="Abstract\IDbEmdSelectionRepository.cs" />
     <Compile Include="DataContexts\Identity\IdentityDb.cs" />
     <Compile Include="DataContexts\SciaDesignForms\SciaDesignFormsDb.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />
-    <Compile Include="Entities\Identity\DbFile.cs" />
+    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdMember.cs" />
+    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdSection.cs" />
+    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdSelection.cs" />
+    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdStructure.cs" />
+    <Compile Include="Entities\Identity\DbFiles\DbEmdFile.cs" />
+    <Compile Include="Entities\Identity\DbFiles\DbFile.cs" />
     <Compile Include="Entities\Identity\ApplicationUser.cs" />
     <Compile Include="IndentityConfig\ApplicationRoleManager.cs" />
     <Compile Include="IndentityConfig\ApplicationSignInManager.cs" />
@@ -133,6 +151,10 @@
     <ProjectReference Include="..\..\LebSoftCommon\GenericRepository\GenericRepository.csproj">
       <Project>{E8E499A9-C94A-49F4-AE19-7279846ECFA3}</Project>
       <Name>GenericRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LebSoftCommon\Ioc_Help\Ioc_Help.csproj">
+      <Project>{5a06566a-56bf-4ea5-b870-c880bdac1a38}</Project>
+      <Name>Ioc_Help</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

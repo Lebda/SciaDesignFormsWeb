@@ -3,13 +3,13 @@ using System.Linq;
 using GenericRepository.Concrete;
 using SciaDesignFormsModel.Abstract;
 using SciaDesignFormsModel.DataContexts.Identity;
-using SciaDesignFormsModel.Entities.Identity;
+using SciaDesignFormsModel.Entities.Identity.DbEmdUserSelection;
 
 namespace SciaDesignFormsModel.Concrete
 {
-    public class DbFileRepository : GenericRepository<DbFile>, IDbFileRepository
+    public class DbEmdSelectionRepository : GenericRepository<DbEmdSelection>, IDbEmdSelectionRepository
     {
-        public DbFileRepository(IdentityDb db)
+        public DbEmdSelectionRepository(IdentityDb db)
             : base(db)
         {
         }

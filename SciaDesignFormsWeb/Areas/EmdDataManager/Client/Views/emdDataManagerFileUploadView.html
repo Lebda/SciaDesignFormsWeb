@@ -1,24 +1,114 @@
-﻿<div class="panel panel-info" ng-controller="emdDataManagerFileUploadController">
-    <div class="panel-heading">
-        <h3 class="panel-title">Esa model data file upload</h3>
-    </div>
-    <div class="panel-body">
-        <h4>Upload on file select</h4>
-        <button type="file" ngf-select="uploadFiles($file)"
-                ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
-            Select File
-        </button>
-        <br><br>
-        File:
-        <div style="font:smaller">
-            {{f.name}} {{f.$error}} {{f.$errorParam}} <br/>
-            <div ng-show="f.progress >= 0">
-                <div ng-bind="f.progress + '%'"></div>
-                <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+﻿<!--<div class="panel panel-info" ng-controller="emdDataManagerFileUploadController">
+<div class="panel-heading">
+<h3 class="panel-title">Esa model data file upload</h3>
+</div>
+<div class="panel-body">
+<h4>Upload on file select</h4>
+<button type="file" ngf-select="uploadFiles($file)"
+ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
+Select File
+</button>
+<br><br>
+File:
+<div style="font:smaller">
+{{f.name}} {{f.$error}} {{f.$errorParam}} <br/>
+<div ng-show="f.progress >= 0">
+<div ng-bind="f.progress + '%'"></div>
+<div class="progress progress-striped">
+<div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+</div>
+</div>
+</div>
+{{errorMsg}}
+</div>
+</div>-->
+
+<!--<div ng-controller="emdDataManagerFileUploadController">
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+Esa model data file upload
+</a>
+<div class="collapse" id="collapseExample">
+
+<h4>Upload on file select</h4>
+<button type="file" ngf-select="uploadFiles($file)"
+ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
+Select File
+</button>
+<br><br>
+File:
+<div style="font:smaller">
+{{f.name}} {{f.$error}} {{f.$errorParam}} <br />
+<div ng-show="f.progress >= 0">
+<div ng-bind="f.progress + '%'"></div>
+<div class="progress progress-striped">
+<div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+</div>
+</div>
+</div>
+{{errorMsg}}
+</div>
+</div>-->
+
+<!--<div ng-controller="emdDataManagerFileUploadController">
+<div class="panel-group" role="tablist">
+<div class="panel panel-primary">
+<div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+<h4 class="panel-title">
+<a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="false" aria-controls="collapseListGroup1">
+Esa model data file upload
+</a>
+</h4>
+</div>
+<div id="collapseListGroup1" class="panel-body" role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+<h4>Upload on file select</h4>
+<button type="file" ngf-select="uploadFiles($file)"
+ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
+Select File
+</button>
+<br><br>
+File:
+<div style="font:smaller">
+{{f.name}} {{f.$error}} {{f.$errorParam}} <br />
+<div ng-show="f.progress >= 0">
+<div ng-bind="f.progress + '%'"></div>
+<div class="progress progress-striped">
+<div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+</div>
+</div>
+</div>
+<div class="panel-footer">{{errorMsg}}</div>
+</div>
+</div>
+</div>
+</div>-->
+
+<div ng-controller="emdDataManagerFileUploadController">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFileUpload" aria-expanded="false" aria-controls="collapseFileUpload">
+        Esa model data file upload
+    </button>
+    <br/>
+    <br />
+    <div class="panel panel-primary collapse" id="collapseFileUpload" >
+        <div class="panel-heading">
+            Upload on file select
+        </div>
+        <div class="panel-body">
+            <button type="file" ngf-select="uploadFiles($file)"
+                    ngf-pattern="'*.zip'" accept="*.zip" ngf-max-size="1MB">
+                Select File
+            </button>
+            <br><br>
+            File:
+            <div style="font:smaller">
+                {{f.name}} {{f.$error}} {{f.$errorParam}} <br />
+                <div ng-show="f.progress >= 0">
+                    <div ng-bind="f.progress + '%'"></div>
+                    <div class="progress progress-striped">
+                        <div class="progress-bar progress-bar-info" style="width:{{f.progress}}%"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        {{errorMsg}}
+        <div class="panel-footer">{{errorMsg}}</div>
     </div>
 </div>

@@ -45,8 +45,11 @@
     <Content Include="Controllers\emdDataManagerApplicationController.js" />
     <Content Include="Controllers\emdDataManagerEmdFilesController .js" />
     <Content Include="Controllers\emdDataManagerFileUploadController.js" />
+    <Content Include="Controllers\emdDataManagerUserSelectionController.js" />
     <Content Include="Controllers\emdDataManagerMainController.js" />
     <Content Include="Modules\emdDataManagerApplicationModule.js" />
+    <Content Include="Services\emdDataManagerAddDeleteEmdFileService.js" />
+    <Content Include="Views\emdDataManagerUserSelectionView.html" />
     <Content Include="Views\emdDataManagerEmdFilesView.html" />
     <Content Include="Views\emdDataManagerFileUploadView.html" />
     <Content Include="Views\emdDataManagerMainView.html" />
@@ -57,12 +60,16 @@
   <ItemGroup>
     <Content Include="Index.cshtml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if not exist "$(ProjectDir)bin" mkdir "$(ProjectDir)bin"
 if not exist "$(ProjectDir)bin\Client" mkdir "$(ProjectDir)bin\Client"
 
 copy "$(ProjectDir)ClientIntegrationPartial.cshtml" "$(ProjectDir)bin\Client\ClientIntegrationPartial.cshtml"
+
+if not exist "$(ProjectDir)bin\Client\Services" mkdir "$(ProjectDir)bin\Client\Services"
+xcopy "$(ProjectDir)Services\*.*" "$(ProjectDir)bin\Client\Services" /Y/D/E
 
 if not exist "$(ProjectDir)bin\Client\Modules" mkdir "$(ProjectDir)bin\Client\Modules"
 xcopy "$(ProjectDir)Modules\*.*" "$(ProjectDir)bin\Client\Modules" /Y/D/E

@@ -9,4 +9,8 @@
         {
             return clientIntegrationFolder + 'Views/emdDataManagerEmdFilesView.html';
         };
+        $scope.userSelectionView = function ()
+        {
+            return clientIntegrationFolder + 'Views/emdDataManagerUserSelectionView.html';
+        };
     });

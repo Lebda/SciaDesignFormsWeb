@@ -4,27 +4,37 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using CommonLibrary.StreamHelp;
+using Ioc_Help.Abstract;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using SciaDesignFormsModel.Abstract;
-using SciaDesignFormsModel.Entities.Identity;
+using SciaDesignFormsModel.Abstract.EmdFile;
+using SciaDesignFormsModel.Entities.Identity.DbFiles;
 using SciaDesignFormsModel.ViewModels.Identity;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
     public class EmdFilesController : ApiController
     {
-        public EmdFilesController(IDbFileRepository repo)
+        public EmdFilesController(
+            IDbEmdFileRepository repo, 
+            IResolver<IEmdFileContext> resEmdFileContext,
+            IEmdFileParser emdFileParser)
         {
             m_repo = repo;
+            m_emdFileParser = emdFileParser;
+            m_resEmdFileContext = resEmdFileContext;
         }
         
         #region MEMBERS
-        readonly IDbFileRepository m_repo;
+        readonly IDbEmdFileRepository m_repo;
+        readonly IEmdFileParser m_emdFileParser;
+        readonly IResolver<IEmdFileContext> m_resEmdFileContext;
         #endregion
 
         #region PROPERTIES
@@ -32,7 +42,7 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 
         public IEnumerable<DbFileViewModel> GetEmdFiles()
         {
-            return m_repo.DataQueryable().Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID});
+            return m_repo.DataQueryable().Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID });
         }
 
         public DbFileViewModel GetEmdFile(int id)
@@ -56,16 +66,25 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
                 {
                     continue;
                 }
-                DbFile dbFile = new DbFile();
+                DbEmdFile dbFile = new DbEmdFile();
                 dbFile.ApplicationUserID = User.Identity.GetUserId();
                 // You would get hold of the inner memory stream here
                 Stream stream = ctnt.ReadAsStreamAsync().Result;
                 dbFile.Content = stream.StreamToByteArray();
                 dbFile.ContentType = ctnt.Headers.ContentType.MediaType;
                 dbFile.FileName = ctnt.Headers.ContentDisposition.FileName;
-                dbFile.FileType = SciaDesignFormsModel.Shared.FileType.eEmdDataZip;
+                //dbFile.FileType = SciaDesignFormsModel.Shared.FileType.eEmdDataZip;
                 m_repo.Insert(dbFile);
                 m_repo.SaveChanges();
+
+                IEmdFileContext context = m_resEmdFileContext.Resolve();
+                context.EmdFileStream = stream;
+                ContentDispositionHeaderValue disposition = ctnt.Headers.ContentDisposition;
+                if (disposition != null)
+                {
+                    context.ZipFileName = JsonConvert.DeserializeObject(disposition.FileName).ToString();
+                }
+                IEmdFileStrcture parsedStructure = m_emdFileParser.Parse(context);
 
             }
             
@@ -115,28 +134,28 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
             return new MultipartMemoryStreamProvider();
         }
         // Extracts Request FormatData as a strongly typed model
-        private object GetFormData<T>(MultipartFormDataStreamProvider result)
-        {
-            if (result.FormData.HasKeys())
-            {
-                var unescapedFormData = Uri.UnescapeDataString(result.FormData
-                                                                     .GetValues(0)
-                                                                     .FirstOrDefault() ?? String.Empty);
-                if (!String.IsNullOrEmpty(unescapedFormData))
-                    return JsonConvert.DeserializeObject<T>(unescapedFormData);
-            }
+        //private object GetFormData<T>(MultipartFormDataStreamProvider result)
+        //{
+        //    if (result.FormData.HasKeys())
+        //    {
+        //        var unescapedFormData = Uri.UnescapeDataString(result.FormData
+        //                                                             .GetValues(0)
+        //                                                             .FirstOrDefault() ?? String.Empty);
+        //        if (!String.IsNullOrEmpty(unescapedFormData))
+        //            return JsonConvert.DeserializeObject<T>(unescapedFormData);
+        //    }
             
-            return null;
-        }
-        private string GetDeserializedFileName(MultipartFileData fileData)
-        {
-            var fileName = GetFileName(fileData);
-            return JsonConvert.DeserializeObject(fileName).ToString();
-        }
-        private string GetFileName(MultipartFileData fileData)
-        {
-            return fileData.Headers.ContentDisposition.FileName;
-        }
+        //    return null;
+        //}
+        //private string GetDeserializedFileName(MultipartFileData fileData)
+        //{
+        //    var fileName = GetFileName(fileData);
+        //    return JsonConvert.DeserializeObject(fileName).ToString();
+        //}
+        //private string GetFileName(MultipartFileData fileData)
+        //{
+        //    return fileData.Headers.ContentDisposition.FileName;
+        //}
     }
     public class UploadDataModel
     {

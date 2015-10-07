@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SciaDesignFormsModel.Shared;
 
-namespace SciaDesignFormsModel.Entities.Identity
+namespace SciaDesignFormsModel.Entities.Identity.DbFiles
 {
     public class DbFile
     {
