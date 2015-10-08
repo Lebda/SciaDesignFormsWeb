@@ -8,7 +8,7 @@
         $scope.emdStructureResource = $resource(emdDataRestFullApiUrl + "/:id", { id: "@id" });
 
         // EVENTS
-        $scope.$on("emdFileAddDeleteEvent", function (event, args)
+        $scope.$on("emdFileAddEvent", function (event, args)
         { // read again from databse
             $scope.listEmdStructures();
         });
@@ -26,6 +26,7 @@
             structure.$delete({ id: structure.ID }).then(function ()
             {
                 $scope.emdStructures.splice($scope.emdStructures.indexOf(structure), 1);
+                emdDataManagerAddDeleteEmdFileService.emdFileDeleteEvent();
             });
         }
         $scope.selectStructure = function (structure)

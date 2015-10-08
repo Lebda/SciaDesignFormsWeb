@@ -12,7 +12,7 @@ namespace SciaDesignFormsModel.Entities.Identity
     {
         public ApplicationUser()
         {
-           // EmdFiles = new List<DbEmdFile>(); 
+           //EmdFiles = new List<DbEmdFile>(); 
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -25,7 +25,6 @@ namespace SciaDesignFormsModel.Entities.Identity
 
         #region NAVIGATIONS
         //public virtual ICollection<DbEmdFile> EmdFiles { get; set; }
-        //public virtual DbEmdSelection EmdSelection { get; set; }
         #endregion
     }
 }

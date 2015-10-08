@@ -9,7 +9,7 @@ using SciaDesignFormsModel.ViewModels.EsaModelData;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EmdStructuresController : ApiController
     {
         public EmdStructuresController(
@@ -34,13 +34,13 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 	        {
 		        return null;    
 	        }
-            return queryFiles4User.Select(item => item.Structure.CreateViewModel());
+            return queryFiles4User.Select(item => item.Structure.CreateViewModel(item.FileSize));
         }
         public DbEmdStructureViewModel GetEmdStructure(int id)
         {
             string userID = User.Identity.GetUserId();
             var query = m_repoFiles.DataQueryable().Where(item => item.ApplicationUserID == userID).Where(item => item.Structure.ID == id).FirstOrDefault();
-            return (query == null) ? (null) : (query.Structure.CreateViewModel());
+            return (query == null) ? (null) : (query.Structure.CreateViewModel(query.FileSize));
         }
         public void PostStructure(DbEmdStructureViewModel structure)
         {
@@ -55,6 +55,11 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
         }
         public void DeleteStructure(int id)
         {
+            var structQuery = m_repoStructs.SelectByID(id);
+            if (structQuery == null)
+            {
+                return;
+            }
             m_repoStructs.Delete(id);
             m_repoStructs.SaveChanges();
             m_repoFiles.Delete(id);
@@ -64,6 +69,7 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
         protected override void Dispose(bool disposing)
         {
             m_repoFiles.Dispose();
+            m_repoStructs.Dispose();
             base.Dispose(disposing);
         }
     }

@@ -2,13 +2,17 @@
     .service("emdDataManagerAddDeleteEmdFileService", function ($rootScope)
     {
         return {
-            emdFileAddDeleteEvent: function ()
+            emdFileAddEvent: function ()
             {
                 //this[type] = zip;
-                $rootScope.$broadcast("emdFileAddDeleteEvent",
-                {
-                    //type: type, zipCode: zip
-                });
-            }
+                $rootScope.$broadcast("emdFileAddEvent",
+                                      {
+                                          //type: type, zipCode: zip
+                                      });
+            },
+            emdFileDeleteEvent: function ()
+            {
+                $rootScope.$broadcast("emdFileDeleteEvent", {});
+            },
         }
     });

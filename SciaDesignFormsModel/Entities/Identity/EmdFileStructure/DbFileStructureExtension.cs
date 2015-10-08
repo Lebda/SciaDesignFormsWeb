@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using CommonLibrary.CollectionHelp;
+using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
 using SciaDesignFormsModel.ViewModels.EsaModelData;
 
 namespace SciaDesignFormsModel.Entities.Identity.EmdFileStructure
 {
     static public class DbFileStructureExtension
     {
-        static public DbEmdStructureViewModel CreateViewModel(this DbEmdStructure dbObject)
+        static public DbEmdStructureViewModel CreateViewModel(this DbEmdStructure dbObject, long fileSize)
         {
             DbEmdStructureViewModel retVal = new DbEmdStructureViewModel();
             retVal.ID = dbObject.ID;
@@ -15,6 +16,7 @@ namespace SciaDesignFormsModel.Entities.Identity.EmdFileStructure
             retVal.IsSelected = dbObject.IsSelected;
             retVal.Description = dbObject.Description;
             retVal.Members = dbObject.EmdMembers.Select(item => item.CreateViewModel()).ToCollection();
+            retVal.FileSize = fileSize;
             return retVal;
         }
         static public DbEmdMemberViewModel CreateViewModel(this DbEmdMember dbObject)
@@ -31,6 +33,13 @@ namespace SciaDesignFormsModel.Entities.Identity.EmdFileStructure
             retVal.Index = dbObject.Index;
             retVal.Position = dbObject.Position;
             retVal.IsSelected = dbObject.IsSelected;
+            return retVal;
+        }
+        static public DbEmdFileRangeViewModel CreateViewModel(this DbEmdFileRange dbObject, long filesSize)
+        {
+            DbEmdFileRangeViewModel retVal = new DbEmdFileRangeViewModel();
+            retVal.EmdFilesLimit = dbObject.EmdFilesLimit;
+            retVal.EmdFilesSize = filesSize;
             return retVal;
         }
         static public void UpdateDb(this DbEmdStructure dbObject, DbEmdStructureViewModel viewModel)

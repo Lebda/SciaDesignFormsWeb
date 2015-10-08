@@ -20,6 +20,7 @@ namespace SciaDesignFormsModel.Module
             // repository
             ninjectKernel.Bind<IDbEmdFileRepository>().To<DbEmdFileRepository>();
             ninjectKernel.Bind<IDbEmdStructureRepository>().To<DbEmdStructureRepository>();
+            ninjectKernel.Bind<IDbEmdFileRangeRepository>().To<DbEmdFileRangeRepository>();
         }
     }
 }

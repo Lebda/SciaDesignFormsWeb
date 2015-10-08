@@ -26,7 +26,7 @@ angular.module("emdDataManagerApplicationModule")
                                     {
                                         file.result = response.data;
                                     });
-                                    emdDataManagerAddDeleteEmdFileService.emdFileAddDeleteEvent();
+                                    emdDataManagerAddDeleteEmdFileService.emdFileAddEvent();
                                 }, function (response)
                                 {
                                     if (response.status > 0)

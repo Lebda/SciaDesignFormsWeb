@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SciaDesignFormsModel.Entities.Identity;
 using SciaDesignFormsModel.Entities.Identity.DbFiles;
+using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
 using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
 using SciaDesignFormsModel.Intializers.Indentity;
 
@@ -21,6 +22,7 @@ namespace SciaDesignFormsModel.DataContexts.Identity
         public DbSet<DbEmdStructure> Structures { get; set; }
         public DbSet<DbEmdMember> Members { get; set; }
         public DbSet<DbEmdSection> Sections { get; set; }
+        public DbSet<DbEmdFileRange> FileRanges { get; set; }
         #endregion
         
         #region STATIC
@@ -42,41 +44,40 @@ namespace SciaDesignFormsModel.DataContexts.Identity
         {
             modelBuilder.HasDefaultSchema("identity");
             base.OnModelCreating(modelBuilder);
-                      
+            
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-
-            // ONE-TO-MANY ApplicationUser(IdentityUser) & DbEmdFile
+            
+            ////***********ApplicationUser**********  
+            // ONE-TO-MANY --> DbEmdFile
             modelBuilder.Entity<DbEmdFile>()
                         .HasRequired(c => c.ApplicationUser)
                         .WithMany()
                         .WillCascadeOnDelete(false);
-            //modelBuilder.Entity<ApplicationUser>()
-            //            .HasMany<DbEmdFile>(s => s.EmdFiles)
-            //            .WithRequired(s => s.ApplicationUser)
-            //            .HasForeignKey(s => s.ApplicationUserID);
-            //modelBuilder.Entity<DbEmdFile>()
-            //            .HasRequired<ApplicationUser>(s => s.ApplicationUser)
-            //            .WithMany(s => s.EmdFiles)
-            //            .HasForeignKey(s => s.ApplicationUserID);
-
+            // ONE-TO-MANY --> DbEmdFileRange
+            modelBuilder.Entity<DbEmdFileRange>()
+                        .HasRequired(t => t.ApplicationUser)
+                        .WithOptional();
+            ////***********ApplicationUser********** 
+            
+            
             // ONE-TO-ONE DbEmdStructure & DbEmdFile
             modelBuilder.Entity<DbEmdFile>()
-                .HasRequired(t => t.Structure)
-                .WithRequiredPrincipal(t => t.EmdFile);
-
+                        .HasRequired(t => t.Structure)
+                        .WithRequiredPrincipal(t => t.EmdFile);
+            
             // ONE-TO-MANY DbEmdStructure & DbEmdMember
             modelBuilder.Entity<DbEmdStructure>()
-                .HasMany<DbEmdMember>(t => t.EmdMembers)
-                .WithRequired(t => t.EmdStructure)
-                .HasForeignKey(t => t.EmdStructureID);
-
+                        .HasMany<DbEmdMember>(t => t.EmdMembers)
+                        .WithRequired(t => t.EmdStructure)
+                        .HasForeignKey(t => t.EmdStructureID);
+            
             // ONE-TO-MANY DbEmdMember & DbEmdSection
             modelBuilder.Entity<DbEmdMember>()
-                .HasMany<DbEmdSection>(t => t.EmdSections)
-                .WithRequired(t => t.Member)
-                .HasForeignKey(t => t.MemberID);
+                        .HasMany<DbEmdSection>(t => t.EmdSections)
+                        .WithRequired(t => t.Member)
+                        .HasForeignKey(t => t.MemberID);
         }
         #endregion
     }

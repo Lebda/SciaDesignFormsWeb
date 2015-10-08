@@ -1,0 +1,21 @@
+﻿<div ng-controller="emdDataManagerUserFileRangesController">
+    <div class="panel panel-primary" ng-show="emdFileRanges[0]">
+        <div class="panel-heading">
+            <h3 class="panel-title">Esa model data storage</h3>
+        </div>
+        <div class="panel-body">
+            <strong>Storage size is:</strong>
+            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesSize}}</strong>bytes</span>
+            <br />
+            <strong>Storage limit is:</strong>
+            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesLimit}}</strong>bytes</span>
+            <br />
+            <strong>Availabel space:</strong>
+            <span class="label label-warning"><strong>{{emdFileRanges[0].EmdFilesLimit - emdFileRanges[0].EmdFilesSize}}</strong>bytes</span>
+            <br />
+            <div ng-show="isRangeOk">
+                <strong>Not enough space ? By another in our shop !</strong>
+            </div>
+        </div>
+    </div>
+</div>

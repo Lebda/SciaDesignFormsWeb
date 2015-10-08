@@ -45,11 +45,13 @@
     <Content Include="Controllers\emdDataManagerApplicationController.js" />
     <Content Include="Controllers\emdDataManagerEmdFilesController .js" />
     <Content Include="Controllers\emdDataManagerFileUploadController.js" />
+    <Content Include="Controllers\emdDataManagerUserFileRangesController.js" />
     <Content Include="Controllers\emdDataManagerUserSelectionController.js" />
     <Content Include="Controllers\emdDataManagerMainController.js" />
     <Content Include="Modules\emdDataManagerApplicationModule.js" />
     <Content Include="Services\emdDataManagerAddDeleteEmdFileService.js" />
     <Content Include="ViewModels\emdDataManagerUserSelectionViewModel.js" />
+    <Content Include="Views\emdDataManagerUserFileRangesView.html" />
     <Content Include="Views\emdDataManagerUserSelectionView.html" />
     <Content Include="Views\emdDataManagerEmdFilesView.html" />
     <Content Include="Views\emdDataManagerFileUploadView.html" />

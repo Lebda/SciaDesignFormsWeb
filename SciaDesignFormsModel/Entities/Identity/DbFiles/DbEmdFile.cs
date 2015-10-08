@@ -8,12 +8,17 @@ namespace SciaDesignFormsModel.Entities.Identity.DbFiles
 {
     public class DbEmdFile
     {
+        public DbEmdFile()
+        {
+            FileSize = 0;
+        }
         public int ID { get; set; }
         [StringLength(255)]
         public string FileName { get; set; }
         [StringLength(100)]
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
+        public long FileSize { get; set; }
 
         #region NAVIGATION
         public string ApplicationUserID { get; set; }

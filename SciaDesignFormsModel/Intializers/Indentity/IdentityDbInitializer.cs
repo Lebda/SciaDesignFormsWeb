@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using SciaDesignFormsModel.DataContexts.Identity;
 using SciaDesignFormsModel.Entities.Identity;
+using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
 using SciaDesignFormsModel.IndentityConfig;
 
 namespace SciaDesignFormsModel.Intializers.Indentity
@@ -16,7 +17,22 @@ namespace SciaDesignFormsModel.Intializers.Indentity
         protected override void Seed(IdentityDb context)
         {
             InitializeIdentityForEF();
+            CreateFileRanges(context);
             base.Seed(context);
+        }
+        public static void CreateFileRanges(IdentityDb context)
+        {
+            IOwinContext owin = HttpContext.Current.GetOwinContext();
+            var userManager = owin.GetUserManager<ApplicationUserManager>();
+            if (userManager == null)
+            {
+                return;
+            }
+            foreach (var item in userManager.Users)
+            {
+                context.FileRanges.Add(new DbEmdFileRange { ApplicationUser = item });  
+            }
+            context.SaveChanges();
         }
         //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role        
         public static void InitializeIdentityForEF()

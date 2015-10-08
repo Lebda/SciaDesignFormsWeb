@@ -13,4 +13,8 @@
         {
             return clientIntegrationFolder + 'Views/emdDataManagerUserSelectionView.html';
         };
+        $scope.userFileRangesView = function ()
+        {
+            return clientIntegrationFolder + 'Views/emdDataManagerUserFileRangesView.html';
+        };
     });
