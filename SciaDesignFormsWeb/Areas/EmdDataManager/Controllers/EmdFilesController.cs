@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,7 +14,6 @@ using Newtonsoft.Json;
 using SciaDesignFormsModel.Abstract;
 using SciaDesignFormsModel.Abstract.EmdFile;
 using SciaDesignFormsModel.Entities.Identity.DbFiles;
-using SciaDesignFormsModel.ViewModels.Identity;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 {
@@ -39,18 +37,7 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
 
         #region PROPERTIES
         #endregion
-
-        public IEnumerable<DbFileViewModel> GetEmdFiles()
-        {
-            return m_repo.DataQueryable().Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID });
-        }
-
-        public DbFileViewModel GetEmdFile(int id)
-        {
-            return m_repo.DataQueryable().Where(item => item.ID == id).Select(item => new DbFileViewModel { FileName = item.FileName, ContentType = item.ContentType, Description = item.Description, UserID = item.ApplicationUserID }).FirstOrDefault();
-        }
-
-        
+      
         [HttpPost] // This is from System.Web.Http, and not from System.Web.Mvc
         public async Task<HttpResponseMessage> Upload()
         {
@@ -74,8 +61,6 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
                 dbFile.ContentType = ctnt.Headers.ContentType.MediaType;
                 dbFile.FileName = ctnt.Headers.ContentDisposition.FileName;
                 //dbFile.FileType = SciaDesignFormsModel.Shared.FileType.eEmdDataZip;
-                m_repo.Insert(dbFile);
-                m_repo.SaveChanges();
 
                 IEmdFileContext context = m_resEmdFileContext.Resolve();
                 context.EmdFileStream = stream;
@@ -84,7 +69,9 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
                 {
                     context.ZipFileName = JsonConvert.DeserializeObject(disposition.FileName).ToString();
                 }
-                IEmdFileStrcture parsedStructure = m_emdFileParser.Parse(context);
+                dbFile.Structure = m_emdFileParser.Parse(context).CreateDb();
+                m_repo.Insert(dbFile);
+                m_repo.SaveChanges();
 
             }
             
@@ -156,10 +143,18 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
         //{
         //    return fileData.Headers.ContentDisposition.FileName;
         //}
+
+        protected override void Dispose(bool disposing)
+        {
+            m_repo.Dispose();
+            base.Dispose(disposing);
+        }
     }
     public class UploadDataModel
     {
         public string testString1 { get; set; }
         public string testString2 { get; set; }
     }
+
+
 }

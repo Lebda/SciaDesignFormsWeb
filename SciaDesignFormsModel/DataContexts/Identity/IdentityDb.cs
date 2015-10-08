@@ -3,8 +3,8 @@ using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SciaDesignFormsModel.Entities.Identity;
-using SciaDesignFormsModel.Entities.Identity.DbEmdUserSelection;
 using SciaDesignFormsModel.Entities.Identity.DbFiles;
+using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
 using SciaDesignFormsModel.Intializers.Indentity;
 
 namespace SciaDesignFormsModel.DataContexts.Identity
@@ -18,7 +18,9 @@ namespace SciaDesignFormsModel.DataContexts.Identity
         
         #region PROPERTIES
         public DbSet<DbEmdFile> EmdFiles { get; set; }
-        public DbSet<DbEmdSelection> EmdSelections { get; set; }
+        public DbSet<DbEmdStructure> Structures { get; set; }
+        public DbSet<DbEmdMember> Members { get; set; }
+        public DbSet<DbEmdSection> Sections { get; set; }
         #endregion
         
         #region STATIC
@@ -59,17 +61,22 @@ namespace SciaDesignFormsModel.DataContexts.Identity
             //            .WithMany(s => s.EmdFiles)
             //            .HasForeignKey(s => s.ApplicationUserID);
 
-
-            // ONE-TO-ONE ApplicationUser(IdentityUser) & DbEmdSelection
-            modelBuilder.Entity<DbEmdSelection>()
-                .HasKey(t => t.ID)
-                .HasRequired(t => t.ApplicationUser)
-                .WithRequiredDependent();
-           
-            // ONE-TO-ONE DbEmdSelection & DbEmdFile
+            // ONE-TO-ONE DbEmdStructure & DbEmdFile
             modelBuilder.Entity<DbEmdFile>()
-                .HasOptional(t => t.EmdSelection)
-                .WithOptionalPrincipal(t => t.EmdFile);         
+                .HasRequired(t => t.Structure)
+                .WithRequiredPrincipal(t => t.EmdFile);
+
+            // ONE-TO-MANY DbEmdStructure & DbEmdMember
+            modelBuilder.Entity<DbEmdStructure>()
+                .HasMany<DbEmdMember>(t => t.EmdMembers)
+                .WithRequired(t => t.EmdStructure)
+                .HasForeignKey(t => t.EmdStructureID);
+
+            // ONE-TO-MANY DbEmdMember & DbEmdSection
+            modelBuilder.Entity<DbEmdMember>()
+                .HasMany<DbEmdSection>(t => t.EmdSections)
+                .WithRequired(t => t.Member)
+                .HasForeignKey(t => t.MemberID);
         }
         #endregion
     }

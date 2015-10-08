@@ -108,28 +108,28 @@
   <ItemGroup>
     <Compile Include="Concrete\DbEmdFileRepository.cs" />
     <Compile Include="Abstract\IDbEmdFileRepository.cs" />
-    <Compile Include="Concrete\DbEmdSelectionRepository.cs" />
+    <Compile Include="Concrete\DbEmdStructureRepository.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileContext.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileMember.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileParser.cs" />
     <Compile Include="Abstract\EmdFile\IEmdFileContext.cs" />
     <Compile Include="Abstract\EmdFile\IEmdFileParser.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileSection.cs" />
-    <Compile Include="Concrete\EmdFile\EmdFileStrcture.cs" />
+    <Compile Include="Concrete\EmdFile\EmdFileStructure.cs" />
     <Compile Include="Abstract\EmdFile\IEmdFileMember.cs" />
     <Compile Include="Abstract\EmdFile\IEmdFileSection.cs" />
-    <Compile Include="Abstract\EmdFile\IEmdFileStrcture.cs" />
-    <Compile Include="Abstract\IDbEmdSelectionRepository.cs" />
+    <Compile Include="Abstract\EmdFile\IEmdFileStructure.cs" />
+    <Compile Include="Abstract\IDbEmdStructureRepository.cs" />
     <Compile Include="DataContexts\Identity\IdentityDb.cs" />
     <Compile Include="DataContexts\SciaDesignForms\SciaDesignFormsDb.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />
-    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdMember.cs" />
-    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdSection.cs" />
-    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdSelection.cs" />
-    <Compile Include="Entities\Identity\DbEmdUserSelection\DbEmdStructure.cs" />
+    <Compile Include="Entities\Identity\EmdFileStructure\DbEmdMember.cs" />
+    <Compile Include="Entities\Identity\EmdFileStructure\DbEmdSection.cs" />
+    <Compile Include="Entities\Identity\EmdFileStructure\DbEmdStructure.cs" />
     <Compile Include="Entities\Identity\DbFiles\DbEmdFile.cs" />
     <Compile Include="Entities\Identity\DbFiles\DbFile.cs" />
     <Compile Include="Entities\Identity\ApplicationUser.cs" />
+    <Compile Include="Entities\Identity\EmdFileStructure\DbFileStructureExtension.cs" />
     <Compile Include="IndentityConfig\ApplicationRoleManager.cs" />
     <Compile Include="IndentityConfig\ApplicationSignInManager.cs" />
     <Compile Include="IndentityConfig\ApplicationUserManager.cs" />
@@ -141,13 +141,20 @@
     <Compile Include="Module\NinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\FileType.cs" />
-    <Compile Include="ViewModels\Identity\DbFileViewModel.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbEmdMemberViewModel.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbEmdSectionViewModel.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbEmdStructureViewModel.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbFileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\LebSoftCommon\CommonLibrary\CommonLibrary.csproj">
+      <Project>{5ac5d78b-bebf-46c2-a2ec-c7b4e811e0cf}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\LebSoftCommon\GenericRepository\GenericRepository.csproj">
       <Project>{E8E499A9-C94A-49F4-AE19-7279846ECFA3}</Project>
       <Name>GenericRepository</Name>

@@ -49,6 +49,7 @@
     <Content Include="Controllers\emdDataManagerMainController.js" />
     <Content Include="Modules\emdDataManagerApplicationModule.js" />
     <Content Include="Services\emdDataManagerAddDeleteEmdFileService.js" />
+    <Content Include="ViewModels\emdDataManagerUserSelectionViewModel.js" />
     <Content Include="Views\emdDataManagerUserSelectionView.html" />
     <Content Include="Views\emdDataManagerEmdFilesView.html" />
     <Content Include="Views\emdDataManagerFileUploadView.html" />

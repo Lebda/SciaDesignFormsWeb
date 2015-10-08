@@ -3,36 +3,49 @@
     {
         $scope.displayMode = "list";
         $scope.currentProduct = null;
-        $scope.emdFiles = null;
+        $scope.emdStructures = null;
  
-        $scope.emdFilesResource = $resource(emdDataRestFullApiUrl + ":id", { id: "@id" });
+        $scope.emdStructureResource = $resource(emdDataRestFullApiUrl + "/:id", { id: "@id" });
 
         // EVENTS
         $scope.$on("emdFileAddDeleteEvent", function (event, args)
         { // read again from databse
-            $scope.listEmdFiles();
+            $scope.listEmdStructures();
         });
  
-        $scope.listEmdFiles = function ()
+        $scope.listEmdStructures = function ()
         {
-            $scope.emdFiles = $scope.emdFilesResource.query();
+            $scope.emdStructures = $scope.emdStructureResource.query();
         }
-        //$scope.listEmdFiles = function ()
-        //{
-        //    $http.get(emdDataRestFullApiUrl).success(function (data)
-        //    {
-        //        $scope.emdFiles = data;
-        //    });
-        //};
-        $scope.listEmdFiles();
-        //$scope.deleteProduct = function (product)
-        //{
-        //    product.$delete().then(function ()
-        //    {
-        //        $scope.products.splice($scope.products.indexOf(product), 1);
-        //    });
-        //    $scope.displayMode = "list";
-        //}
+        $scope.updateStructure = function (structure)
+        {
+            structure.$save();
+        }
+        $scope.deleteStructure = function (structure)
+        {
+            structure.$delete({ id: structure.ID }).then(function ()
+            {
+                $scope.emdStructures.splice($scope.emdStructures.indexOf(structure), 1);
+            });
+        }
+        $scope.selectStructure = function (structure)
+        {
+            $scope.emdStructures.forEach(function (item, index, array)
+            {
+                if (item.ID != structure.ID)
+                {
+                    item.IsSelected = false;
+                }
+                else
+                {
+                    item.IsSelected = true;
+                }
+                $scope.updateStructure(item);
+            });
+        }
+
+
+        $scope.listEmdStructures();
         //$scope.createProduct = function (product)
         //{
         //    new $scope.productsResource(product).$save().then(function(newProduct)
@@ -40,11 +53,6 @@
         //        $scope.products.push(newProduct);
         //        $scope.displayMode = "list";
         //    });
-        //}
-        //$scope.updateProduct = function (product)
-        //{
-        //    product.$save();
-        //    $scope.displayMode = "list";
         //}
         //$scope.editOrCreateProduct = function (product)
         //{

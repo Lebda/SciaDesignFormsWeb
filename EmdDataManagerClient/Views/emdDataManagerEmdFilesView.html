@@ -16,12 +16,28 @@
                                 <td>
                                     #
                                 </td>
+                                <td>
+                                    Structure name
+                                </td>
+                                <td>
+                                    
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in emdFiles">
+                            <tr ng-repeat="item in emdStructures">
+                                <td>{{$index + 1}}</td>
                                 <td>
-                                    {{item.FileName}}
+                                    {{item.Name}}
+                                    <span ng-show="item.IsSelected" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </td>
+                                <td>
+                                    <button ng-click="selectStructure(item)" ng-disabled="item.IsSelected" type="button" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Select
+                                    </button>
+                                    <button ng-click="deleteStructure(item)" ng-disabled="item.IsSelected" type="button" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SciaDesignFormsModel.ViewModels.Identity
+namespace SciaDesignFormsModel.ViewModels.EsaModelData
 {
     public class DbFileViewModel
     {

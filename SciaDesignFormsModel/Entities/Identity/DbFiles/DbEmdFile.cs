@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
-using SciaDesignFormsModel.Entities.Identity.DbEmdUserSelection;
+using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
 
 namespace SciaDesignFormsModel.Entities.Identity.DbFiles
 {
@@ -14,13 +14,11 @@ namespace SciaDesignFormsModel.Entities.Identity.DbFiles
         [StringLength(100)]
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
-        public string Description { get; set; }
 
         #region NAVIGATION
         public string ApplicationUserID { get; set; }
         public virtual IdentityUser ApplicationUser { get; set; }
-        public string EmdSelectionID { get; set; }
-        public virtual DbEmdSelection EmdSelection { get; set; }
+        public virtual DbEmdStructure Structure { get; set; }
         #endregion
     }
 }

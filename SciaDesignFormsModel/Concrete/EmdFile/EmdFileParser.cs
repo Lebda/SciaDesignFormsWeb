@@ -10,7 +10,7 @@ namespace SciaDesignFormsModel.Concrete.EmdFile
     public class EmdFileParser : IEmdFileParser
     {
         public EmdFileParser(
-            IResolver<IEmdFileStrcture> resEmdFileStrcture,
+            IResolver<IEmdFileStructure> resEmdFileStrcture,
             IResolver<IEmdFileMember> resEmdFileMember,
             IResolver<IEmdFileSection> resEmdFileSection)
         {
@@ -20,14 +20,14 @@ namespace SciaDesignFormsModel.Concrete.EmdFile
         }
 
         #region MEMBERS;
-        readonly IResolver<IEmdFileStrcture> m_resEmdFileStrcture;
+        readonly IResolver<IEmdFileStructure> m_resEmdFileStrcture;
         readonly IResolver<IEmdFileMember> m_resEmdFileMember;
         readonly IResolver<IEmdFileSection> m_resEmdFileSection;
         #endregion
 
-        public IEmdFileStrcture Parse(IEmdFileContext context)
+        public IEmdFileStructure Parse(IEmdFileContext context)
         {
-            IEmdFileStrcture retVal = m_resEmdFileStrcture.Resolve();
+            IEmdFileStructure retVal = m_resEmdFileStrcture.Resolve();
             using (var zipArchive = new ZipArchive(context.EmdFileStream, ZipArchiveMode.Read, true))
             {
                 if (zipArchive.Entries.Count <= 0 || zipArchive.Entries.FirstOrDefault() == null)

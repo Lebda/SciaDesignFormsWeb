@@ -14,12 +14,12 @@ namespace SciaDesignFormsModel.Module
         {
             ninjectKernel.Bind<IEmdFileSection>().To<EmdFileSection>();
             ninjectKernel.Bind<IEmdFileMember>().To<EmdFileMember>();
-            ninjectKernel.Bind<IEmdFileStrcture>().To<EmdFileStrcture>();
+            ninjectKernel.Bind<IEmdFileStructure>().To<EmdFileStructure>();
             ninjectKernel.Bind<IEmdFileContext>().To<EmdFileContext>();
             ninjectKernel.Bind<IEmdFileParser>().To<EmdFileParser>();
             // repository
-            ninjectKernel.Bind<IDbEmdFileRepository>().To<DbEmdFileRepository>().InSingletonScope();
-            ninjectKernel.Bind<IDbEmdSelectionRepository>().To<DbEmdSelectionRepository>().InSingletonScope();
+            ninjectKernel.Bind<IDbEmdFileRepository>().To<DbEmdFileRepository>();
+            ninjectKernel.Bind<IDbEmdStructureRepository>().To<DbEmdStructureRepository>();
         }
     }
 }
