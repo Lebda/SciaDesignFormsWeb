@@ -109,6 +109,8 @@
     <Compile Include="Concrete\DbEmdFileRangeRepository.cs" />
     <Compile Include="Concrete\DbEmdFileRepository.cs" />
     <Compile Include="Abstract\IDbEmdFileRepository.cs" />
+    <Compile Include="Concrete\DbEmdSectionRepository.cs" />
+    <Compile Include="Concrete\DbEmdMemberRepository.cs" />
     <Compile Include="Concrete\DbEmdStructureRepository.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileContext.cs" />
     <Compile Include="Concrete\EmdFile\EmdFileMember.cs" />
@@ -122,6 +124,8 @@
     <Compile Include="Abstract\EmdFile\IEmdFileStructure.cs" />
     <Compile Include="Abstract\IDbEmdStructureRepository.cs" />
     <Compile Include="Abstract\IDbEmdFileRangeRepository.cs" />
+    <Compile Include="Abstract\IDbEmdMemberRepository.cs" />
+    <Compile Include="Abstract\IDbEmdSectionRepository.cs" />
     <Compile Include="DataContexts\Identity\IdentityDb.cs" />
     <Compile Include="DataContexts\SciaDesignForms\SciaDesignFormsDb.cs" />
     <Compile Include="Entities\Identity\ApplicationRole.cs" />
@@ -132,7 +136,7 @@
     <Compile Include="Entities\Identity\DbFiles\DbEmdFile.cs" />
     <Compile Include="Entities\Identity\DbFiles\DbFile.cs" />
     <Compile Include="Entities\Identity\ApplicationUser.cs" />
-    <Compile Include="Entities\Identity\EmdFileStructure\DbFileStructureExtension.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbEmdExtension.cs" />
     <Compile Include="IndentityConfig\ApplicationRoleManager.cs" />
     <Compile Include="IndentityConfig\ApplicationSignInManager.cs" />
     <Compile Include="IndentityConfig\ApplicationUserManager.cs" />
@@ -149,6 +153,7 @@
     <Compile Include="ViewModels\EsaModelData\DbEmdSectionViewModel.cs" />
     <Compile Include="ViewModels\EsaModelData\DbEmdStructureViewModel.cs" />
     <Compile Include="ViewModels\EsaModelData\DbFileViewModel.cs" />
+    <Compile Include="ViewModels\EsaModelData\DbEmdSelectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -63,10 +63,22 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers
                     Stream stream = ctnt.ReadAsStreamAsync().Result;
                     DbEmdFile dbFile = CreateDbFile(ctnt, stream);
                     dbFile.Structure = m_emdFileParser.Parse(CreateEmdFileContext(ctnt, stream)).CreateDb();
+                    //if (queryFiles4User.Count == 0)
+                    //{
+                    //    dbFile.Structure.IsSelected = true;
+                    //    if (dbFile.Structure.EmdMembers.Count > 0)
+                    //    {
+                    //        dbFile.Structure.EmdMembers.First().IsSelected = true;
+                    //        if (dbFile.Structure.EmdMembers.First().EmdSections.Count > 0)
+                    //        {
+                    //            dbFile.Structure.EmdMembers.First().EmdSections.First().IsSelected = true;
+                    //        }
+                    //    }
+                    //}
                     m_repoFiles.Insert(dbFile);
                 }
                 m_repoFiles.SaveChanges();
-                var returnData = "nable to save changes. Try again, and if the problem persists see your system administrator.";
+                var returnData = "Esa model daa file is saved in database.";
                 return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
             }
             catch (DataException)

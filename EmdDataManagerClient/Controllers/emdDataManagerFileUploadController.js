@@ -3,8 +3,8 @@
 angular.module("emdDataManagerApplicationModule")
     .controller('emdDataManagerFileUploadController',
                 [
-                    '$scope', 'Upload', '$timeout', 'emdDataUploadWebApiUrl', 'emdDataManagerAddDeleteEmdFileService',
-                    function ($scope, Upload, $timeout, emdDataUploadWebApiUrl, emdDataManagerAddDeleteEmdFileService)
+                    '$scope', 'Upload', '$timeout', 'emdDataUploadWebApiUrl', 'emdDataManagerStructureService',
+                    function ($scope, Upload, $timeout, emdDataUploadWebApiUrl, emdDataManagerStructureService)
                     {
                         $scope.fileUploadObj = { testString1: "Test string 1", testString2: "Test string 2" };
                         $scope.uploadFiles = function (file)
@@ -26,7 +26,7 @@ angular.module("emdDataManagerApplicationModule")
                                     {
                                         file.result = response.data;
                                     });
-                                    emdDataManagerAddDeleteEmdFileService.emdFileAddEvent();
+                                    emdDataManagerStructureService.itemAdded();
                                 }, function (response)
                                 {
                                     if (response.status > 0)

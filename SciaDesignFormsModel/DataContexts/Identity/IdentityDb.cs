@@ -55,7 +55,7 @@ namespace SciaDesignFormsModel.DataContexts.Identity
                         .HasRequired(c => c.ApplicationUser)
                         .WithMany()
                         .WillCascadeOnDelete(false);
-            // ONE-TO-MANY --> DbEmdFileRange
+            // ONE-TO-ONE --> DbEmdFileRange
             modelBuilder.Entity<DbEmdFileRange>()
                         .HasRequired(t => t.ApplicationUser)
                         .WithOptional();

@@ -1,83 +1,42 @@
-﻿angular.module("emdDataManagerApplicationModule")
-    .controller("emdDataManagerEmdFilesController", function ($scope, $http, $resource, emdDataRestFullApiUrl, emdDataManagerAddDeleteEmdFileService)
+﻿/// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\emddatamanagerclient\services\emddatamanagerstructureservice.js" />
+
+angular.module("emdDataManagerApplicationModule")
+    .controller("emdDataManagerEmdFilesController", function ($scope, emdDataManagerSelectionService, emdDataManagerStructureService, clientIntegrationFolder)
     {
-        $scope.displayMode = "list";
-        $scope.currentProduct = null;
-        $scope.emdStructures = null;
- 
-        $scope.emdStructureResource = $resource(emdDataRestFullApiUrl + "/:id", { id: "@id" });
+        // MEMBERS
+        $scope.emdStructures = emdDataManagerStructureService.list();
 
         // EVENTS
-        $scope.$on("emdFileAddEvent", function (event, args)
-        { // read again from databse
-            $scope.listEmdStructures();
+        $scope.$on("emdDataManagerStructuresChange", function (event, args)
+        {
+            if (args.type === "ADD")
+            {
+                $scope.emdStructures = emdDataManagerStructureService.list();
+            }
         });
- 
-        $scope.listEmdStructures = function ()
+
+        // METHODS
+        $scope.members4SelectedStructureView = function ()
         {
-            $scope.emdStructures = $scope.emdStructureResource.query();
-        }
-        $scope.updateStructure = function (structure)
+            return clientIntegrationFolder + 'Views/emdDataManagerMembersView.html';
+        };
+        $scope.section4SelectedMemberView = function ()
         {
-            structure.$save();
+            return clientIntegrationFolder + 'Views/emdDataManagerSectionsView.html';
+        };
+        $scope.selectStructure = function (structure)
+        {
+            emdDataManagerStructureService.selectItem($scope.emdStructures, structure);
+            emdDataManagerSelectionService.setActiveStructureID(structure.ID);
+            emdDataManagerSelectionService.testList();
+            emdDataManagerSelectionService.load().$promise.then(function (data)
+            {
+                emdDataManagerSelectionService.loadingFinish(data);
+            });
         }
         $scope.deleteStructure = function (structure)
         {
-            structure.$delete({ id: structure.ID }).then(function ()
-            {
-                $scope.emdStructures.splice($scope.emdStructures.indexOf(structure), 1);
-                emdDataManagerAddDeleteEmdFileService.emdFileDeleteEvent();
-            });
+            emdDataManagerStructureService.deleteItem($scope.emdStructures, structure);
+            emdDataManagerSelectionService.deleteStructure(structure.ID);
         }
-        $scope.selectStructure = function (structure)
-        {
-            $scope.emdStructures.forEach(function (item, index, array)
-            {
-                if (item.ID != structure.ID)
-                {
-                    item.IsSelected = false;
-                }
-                else
-                {
-                    item.IsSelected = true;
-                }
-                $scope.updateStructure(item);
-            });
-        }
-
-
-        $scope.listEmdStructures();
-        //$scope.createProduct = function (product)
-        //{
-        //    new $scope.productsResource(product).$save().then(function(newProduct)
-        //    {
-        //        $scope.products.push(newProduct);
-        //        $scope.displayMode = "list";
-        //    });
-        //}
-        //$scope.editOrCreateProduct = function (product)
-        //{
-        //    $scope.currentProduct = product ? product : {};
-        //    $scope.displayMode = "edit";
-        //}
-        //$scope.saveEdit = function (product)
-        //{
-        //    if (angular.isDefined(product.id))
-        //    {
-        //        $scope.updateProduct(product);
-        //    }
-        //    else
-        //    {
-        //        $scope.createProduct(product);
-        //    }
-        //}
-        //$scope.cancelEdit = function ()
-        //{
-        //    if ($scope.currentProduct && $scope.currentProduct.$get)
-        //    {
-        //        $scope.currentProduct.$get();
-        //    }
-        //    $scope.currentProduct = {};
-        //    $scope.displayMode = "list";
-        //}
     });

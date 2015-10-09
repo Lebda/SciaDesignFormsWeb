@@ -8,7 +8,7 @@
         });
         $scope.$on("emdFileDeleteEvent", function (event, args)
         { // read again from databse
-            $scope.listEmdRanges();
+            $scope.listEmdRanges(); 
         });
         $scope.emdFileRangesResource = $resource(emdFileRangesRestFullApiUrl + "/:id", { id: "@id" });
         $scope.isRangeOk = true;

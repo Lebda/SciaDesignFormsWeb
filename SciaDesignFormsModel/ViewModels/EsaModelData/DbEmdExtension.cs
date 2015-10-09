@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using CommonLibrary.CollectionHelp;
 using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
-using SciaDesignFormsModel.ViewModels.EsaModelData;
+using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
 
-namespace SciaDesignFormsModel.Entities.Identity.EmdFileStructure
+namespace SciaDesignFormsModel.ViewModels.EsaModelData
 {
-    static public class DbFileStructureExtension
+    static public class DbEmdExtension
     {
         static public DbEmdStructureViewModel CreateViewModel(this DbEmdStructure dbObject, long fileSize)
         {
@@ -15,21 +14,21 @@ namespace SciaDesignFormsModel.Entities.Identity.EmdFileStructure
             retVal.Name = dbObject.Name;
             retVal.IsSelected = dbObject.IsSelected;
             retVal.Description = dbObject.Description;
-            retVal.Members = dbObject.EmdMembers.Select(item => item.CreateViewModel()).ToCollection();
             retVal.FileSize = fileSize;
             return retVal;
         }
         static public DbEmdMemberViewModel CreateViewModel(this DbEmdMember dbObject)
         {
             DbEmdMemberViewModel retVal = new DbEmdMemberViewModel();
+            retVal.ID = dbObject.ID;
             retVal.Name = dbObject.Name;
             retVal.IsSelected = dbObject.IsSelected;
-            retVal.Sections = dbObject.EmdSections.Select(item => item.CreateViewModel()).ToCollection();
             return retVal;
         }
         static public DbEmdSectionViewModel CreateViewModel(this DbEmdSection dbObject)
         {
             DbEmdSectionViewModel retVal = new DbEmdSectionViewModel();
+            retVal.ID = dbObject.ID;
             retVal.Index = dbObject.Index;
             retVal.Position = dbObject.Position;
             retVal.IsSelected = dbObject.IsSelected;

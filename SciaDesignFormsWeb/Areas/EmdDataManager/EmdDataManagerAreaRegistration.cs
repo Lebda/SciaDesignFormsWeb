@@ -15,13 +15,23 @@ namespace SciaDesignFormsWeb.Areas.EmdDataManager
         {
             //context.MapHttpRoute(
             //    c_areaName + "_DefaultActionApi",
-            //    AreaName + "/api/{controller}/{action}/{id}",
+            //    AreaName + "/api/nrest/{controller}/{action}/{structureID}/{id}",
             //    new { area = AreaName, id = RouteParameter.Optional });
+
+            //context.MapHttpRoute(
+            //    c_areaName + "_DefaultActionApi",
+            //    AreaName + "/api/{controller}/{structureID}",
+            //    new { area = AreaName });
 
             context.MapHttpRoute(
                 c_areaName + "_DefaultApi",
                 AreaName + "/api/{controller}/{id}",
                 new { area = AreaName, id = RouteParameter.Optional });
+
+            //context.MapHttpRoute(
+            //    c_areaName + "_Api4StructureID",
+            //    AreaName + "/api/{controller}/{structureID}/{id}",
+            //    new { area = AreaName, id = RouteParameter.Optional });
 
             context.MapRoute(
                 c_areaName + "_Default",

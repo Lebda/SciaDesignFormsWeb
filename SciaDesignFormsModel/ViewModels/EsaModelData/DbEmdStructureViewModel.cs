@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace SciaDesignFormsModel.ViewModels.EsaModelData
@@ -8,7 +7,6 @@ namespace SciaDesignFormsModel.ViewModels.EsaModelData
     {
         public DbEmdStructureViewModel()
         {
-            Members = new List<DbEmdMemberViewModel>();
             Name = String.Empty;
             IsSelected = false;
             ID = -1;
@@ -17,7 +15,6 @@ namespace SciaDesignFormsModel.ViewModels.EsaModelData
         }
 
         #region PROPERTIES
-        public ICollection<DbEmdMemberViewModel> Members { get; set; }
         public int ID { get; set; }
         public string Name { get; set; }
         public bool IsSelected { get; set; }

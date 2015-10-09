@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using SciaDesignFormsModel.Abstract;
-using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
 using SciaDesignFormsModel.ViewModels.EsaModelData;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers

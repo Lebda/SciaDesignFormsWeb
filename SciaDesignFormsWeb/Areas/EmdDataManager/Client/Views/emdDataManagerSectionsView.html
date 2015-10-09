@@ -1,0 +1,31 @@
+﻿<div ng-controller="emdDataManagerSectionsController">
+    Hello
+    <br />
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr id="headRow">
+                <td>
+                    #
+                </td>
+                <td>
+                    Section name
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{$index + 1}}</td>
+                <td>
+                    Section ID: {{item.Index}}, position {{item.Position}} m
+                    <span ng-show="item.IsSelected" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </td>
+                <td>
+                    <button ng-click="selectSection(item)" ng-disabled="item.IsSelected" type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Select
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

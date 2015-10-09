@@ -10,9 +10,11 @@ namespace SciaDesignFormsModel.ViewModels.EsaModelData
             Position = 0.0;
             Index = 0;
             IsSelected = false;
+            ID = -1;
         }
 
         #region PROPERTIES
+        public int ID { get; set; }
         public double Position { get; set; }
         public long Index { get; set; }
         public bool IsSelected { get; set; }

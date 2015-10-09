@@ -187,8 +187,12 @@
     <Compile Include="Areas\Calculation\CalculationAreaRegistration.cs" />
     <Compile Include="Areas\Calculation\Controllers\CalculationDataController.cs" />
     <Compile Include="Areas\Calculation\Controllers\DocumentController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\EmdActiveStructureController.cs" />
     <Compile Include="Areas\EmdDataManager\Controllers\EmdFileRangesController.cs" />
     <Compile Include="Areas\EmdDataManager\Controllers\EmdFilesController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\EmdMembersController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\EmdSectionsController.cs" />
+    <Compile Include="Areas\EmdDataManager\Controllers\EmdSelectionsController.cs" />
     <Compile Include="Areas\EmdDataManager\Controllers\EmdStructuresController.cs" />
     <Compile Include="Areas\EmdDataManager\Controllers\UIController.cs" />
     <Compile Include="Areas\EmdDataManager\EmdDataManagerAreaRegistration.cs" />
