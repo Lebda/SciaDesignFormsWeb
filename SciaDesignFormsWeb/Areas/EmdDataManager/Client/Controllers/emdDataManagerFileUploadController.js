@@ -1,5 +1,4 @@
-﻿/// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\emddatamanagerclient\services\emddatamanageradddeleteemdfileservice.js" />
-
+﻿
 angular.module("emdDataManagerApplicationModule")
     .controller('emdDataManagerFileUploadController',
                 [

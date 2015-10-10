@@ -1,43 +1,38 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .controller("emdDataManagerMembersController", function ($scope, emdDataManagerSelectionService, emdDataManagerMemberService)
+    .controller("emdDataManagerMembersController", function ($scope, emdDataManagerMemberService, emdEvent_STRUCTURE, emdEvent_STRUCTURE_CHANGE, emdDataManagerHelpService)
     {
-        // MEMBERS
+        // INTERFACE
         $scope.items = null;
+        $scope.selectMember = function (member)
+        {
+            emdDataManagerHelpService.selectItem($scope.items, member);
+            emdDataManagerMemberService.publishChange($scope.items, emdDataManagerHelpService.getFirstSelected($scope.items));
+        }
 
         // EVENTS
-        $scope.$on("emdDataManagerSelectionChange", function (event, args)
+        $scope.$on(emdEvent_STRUCTURE, function (event, args)
         {
-            if (args.type === "LOADED" || args.type === "STRUCTURE SELECTION" || args.type === "DELETE SELECTED STRUCTURE")
+            if (args.type === emdEvent_STRUCTURE_CHANGE)
             {
-                updateItems();
+                loadItems(args.activeItem);
             }
         });
 
+
         // METHODS
-        var updateItems = function ()
+        var loadItems = function (selectedStructure)
         {
-            if (emdDataManagerSelectionService.getActiveStructureID() != null)
-            {
-                $scope.items = emdDataManagerMemberService.list(emdDataManagerSelectionService.getActiveStructureID());
-            }
-            else
+            if (selectedStructure === null)
             {
                 $scope.items = null;
             }
-        };
-        $scope.selectMember = function (member)
-        {
-            emdDataManagerMemberService.selectItem($scope.items, member);
-            emdDataManagerSelectionService.setActiveMemberID(member.ID);
-        }
-        
-        // CTOR
-        if (emdDataManagerSelectionService.geIsLoaded() === false)
-        {
-            emdDataManagerSelectionService.seIsLoaded(true);
-            emdDataManagerSelectionService.load().$promise.then(function (data)
+            else
             {
-                emdDataManagerSelectionService.loadingFinish(data);
-            });
-        }
+                emdDataManagerMemberService.list(selectedStructure.ID).$promise.then(function (data)
+                {
+                    $scope.items = data;
+                    emdDataManagerMemberService.publishChange($scope.items, emdDataManagerHelpService.getFirstSelected($scope.items));
+                });
+            }
+        };
     });

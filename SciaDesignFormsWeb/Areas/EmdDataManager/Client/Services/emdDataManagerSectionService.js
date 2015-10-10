@@ -1,41 +1,27 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .factory('emdDataManagerSectionService', function ($rootScope, $http, $resource, emdSectionsRestFullApiUrl)
+    .constant("emdEvent_SECTION", 'emdEvent_SECTION')
+    .constant("emdEvent_SECTION_CHANGE", 'emdEvent_SECTION_CHANGE')
+    .factory('emdDataManagerSectionService', function ($rootScope, $http, $resource, emdSectionsRestFullApiUrl, emdEvent_SECTION, emdEvent_SECTION_CHANGE)
     {
         var serviceResource = $resource(emdSectionsRestFullApiUrl + "/:id", { id: "@id" });
-        var updateItem = function (item)
+        var itemChangeEvent = function (changeType, all, active)
         {
-            item.$save();
-        };
-        var itemChange = function (changeType, changeViewModel)
-        {
-            $rootScope.$broadcast("emdDataManagerSectionsChange",
+            $rootScope.$broadcast(emdEvent_SECTION,
                                   {
                                       type: changeType,
-                                      viewModel: changeViewModel
+                                      activeItem: active,
+                                      allItems: all
                                   });
         };
         var obj =
         {
+            publishChange: function (allItems, activeItem)
+            {
+                itemChangeEvent(emdEvent_SECTION_CHANGE, allItems, activeItem);
+            },
             list : function(memberID)
             {
                 return serviceResource.query({ id: memberID });
-            },
-            selectItem: function (allItems, activeItem)
-            {
-                allItems.forEach(function (item, index, array)
-                {
-                    if (item.IsSelected === true)
-                    {
-                        item.IsSelected = false;
-                        updateItem(item);
-                    }
-                    if (item.ID === activeItem.ID)
-                    {
-                        item.IsSelected = true;
-                        updateItem(item);
-                    }
-                });
-                itemChange("SELECT", activeItem);
             },
         };
         return obj;

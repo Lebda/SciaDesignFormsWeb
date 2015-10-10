@@ -1,52 +1,29 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .factory('emdDataManagerStructureService', function ($rootScope, $http, $resource, emdDataStructuresRestFullApiUrl)
+    .constant("emdEvent_STRUCTURE", 'emdEvent_STRUCTURE')
+    .constant("emdEvent_STRUCTURE_CHANGE", 'emdEvent_STRUCTURE_CHANGE')
+    .factory('emdDataManagerStructureService', function ($rootScope, $http, $resource,
+        emdDataStructuresRestFullApiUrl,
+        emdEvent_STRUCTURE, emdEvent_STRUCTURE_CHANGE)
     {
-        var emdDataManagerStructuresChange = function (changeType, changeViewModel)
+        var itemChangeEvent = function (changeType, all, active)
         {
-            $rootScope.$broadcast("emdDataManagerStructuresChange",
+            $rootScope.$broadcast(emdEvent_STRUCTURE,
                                   {
                                       type: changeType,
-                                      viewModel: changeViewModel
+                                      activeItem : active,
+                                      allItems: all
                                   });
         };
-        var serviceResource = $resource(emdDataStructuresRestFullApiUrl + "/:id", { id: "@id" });
-        var updateItem = function (item)
-        {
-            item.$save();
-        };
+        var serviceResourceInternal = $resource(emdDataStructuresRestFullApiUrl + "/:id", { id: "@id" });
         var obj =
         {
+            publishChange: function (allItems, activeItem)
+            {
+                itemChangeEvent(emdEvent_STRUCTURE_CHANGE, allItems, activeItem);
+            },
             list : function()
             {
-                return serviceResource.query();
-            },
-            getActive: function (allItems)
-            {
-                var retVal = null;
-                allItems.forEach(function (item, index, array)
-                {
-                    if (item.IsSelected === true)
-                    {
-                        retVal = item;
-                    }
-                });
-                return retVal;
-            },
-            selectItem: function (allItems, activeItem)
-            {
-                allItems.forEach(function (item, index, array)
-                {
-                    if (item.IsSelected === true)
-                    {
-                        item.IsSelected = false;
-                        updateItem(item);
-                    }
-                    if (item.ID === activeItem.ID)
-                    {
-                        item.IsSelected = true;
-                        updateItem(item);
-                    }
-                });
+                return serviceResourceInternal.query();
             },
             deleteItem: function (allItems, item4Delete)
             {
@@ -57,7 +34,7 @@
             },
             itemAdded: function ()
             {
-                emdDataManagerStructuresChange("ADD", null);
+                itemChangeEvent("ADD", null);
             },
         };
         return obj;
