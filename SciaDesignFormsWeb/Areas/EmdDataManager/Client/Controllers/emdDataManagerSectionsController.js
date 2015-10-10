@@ -24,6 +24,7 @@
             if (selectedMember === null)
             {
                 $scope.items = null;
+                emdDataManagerSectionService.publishChange($scope.items, null);
             }
             else
             {

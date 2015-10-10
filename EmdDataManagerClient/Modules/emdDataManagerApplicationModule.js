@@ -1,1 +1,1 @@
-﻿angular.module("emdDataManagerApplicationModule", ['ngFileUpload', 'ngResource']);
+﻿angular.module("emdDataManagerApplicationModule", ['ngFileUpload', 'ngResource', 'lebSoftFiltersApplicationModule']);

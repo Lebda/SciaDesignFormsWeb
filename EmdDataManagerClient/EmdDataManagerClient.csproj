@@ -72,7 +72,9 @@
   <ItemGroup>
     <Content Include="Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Dependency\Common\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if not exist "$(ProjectDir)bin" mkdir "$(ProjectDir)bin"
@@ -99,7 +101,16 @@ if not exist "$(ProjectDir)bin\Client\ViewModels" mkdir "$(ProjectDir)bin\Client
 xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client\ViewModels" /Y/D/E
 
 if not exist "$(ProjectDir)bin\Client\Views" mkdir "$(ProjectDir)bin\Client\Views"
-xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client\Views" /Y/D/E</PreBuildEvent>
+xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client\Views" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Dependency" mkdir "$(ProjectDir)bin\Client\Dependency"
+if not exist "$(ProjectDir)bin\Client\Dependency\Common" mkdir "$(ProjectDir)bin\Client\Dependency\Common"
+xcopy "$(ProjectDir)Dependency\*.*" "$(ProjectDir)bin\Client\Dependency" /Y/D/E
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

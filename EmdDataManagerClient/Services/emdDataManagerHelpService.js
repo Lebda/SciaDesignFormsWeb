@@ -3,7 +3,7 @@
     {
         var emdDataManagerApplicationGetFirstSelected = function (allItems)
         {
-            if (!angular.isArray(allItems))
+            if (allItems === null || !angular.isArray(allItems))
             {
                 return null;
             }

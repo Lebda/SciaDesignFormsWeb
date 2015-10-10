@@ -5,13 +5,13 @@
         </div>
         <div class="panel-body">
             <strong>Storage size is:</strong>
-            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesSize}}</strong>bytes</span>
+            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesSize | lebSoftFileSizeFilter}}</strong></span>
             <br />
             <strong>Storage limit is:</strong>
-            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesLimit}}</strong>bytes</span>
+            <span class="label label-info"><strong>{{emdFileRanges[0].EmdFilesLimit | lebSoftFileSizeFilter}}</strong></span>
             <br />
             <strong>Availabel space:</strong>
-            <span class="label label-warning"><strong>{{emdFileRanges[0].EmdFilesLimit - emdFileRanges[0].EmdFilesSize}}</strong>bytes</span>
+            <span class="label label-warning"><strong>{{(emdFileRanges[0].EmdFilesLimit - emdFileRanges[0].EmdFilesSize) | lebSoftFileSizeFilter}}</strong></span>
             <br />
             <div ng-show="isRangeOk">
                 <strong>Not enough space ? By another in our shop !</strong>

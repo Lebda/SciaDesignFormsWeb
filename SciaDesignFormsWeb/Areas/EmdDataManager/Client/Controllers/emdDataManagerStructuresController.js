@@ -3,19 +3,17 @@
 angular.module("emdDataManagerApplicationModule")
     .controller("emdDataManagerStructuresController", function ($scope, emdDataManagerStructureService, emdEvent_STRUCTURE, emdDataManagerHelpService)
     {
-        // MEMBERS
-        $scope.items = null;
-
         // EVENTS
         $scope.$on(emdEvent_STRUCTURE, function (event, args)
         {
             if (args.type === "ADD")
             {
-                $scope.items = emdDataManagerStructureService.list();
+                loadItems();
             }
         });
 
-        // METHODS
+        // INTERFACE
+        $scope.items = null;
         $scope.selectStructure = function (structure)
         {
             emdDataManagerHelpService.selectItem($scope.items, structure);
@@ -23,14 +21,24 @@ angular.module("emdDataManagerApplicationModule")
         }
         $scope.deleteStructure = function (structure)
         {
+            var selected = emdDataManagerHelpService.getFirstSelected($scope.items);
             emdDataManagerStructureService.deleteItem($scope.items, structure);
-            //emdDataManagerSelectionService.deleteStructure(structure.ID);
+            if (selected !== null && selected.ID === structure.ID)
+            {
+                emdDataManagerStructureService.publishChange($scope.items, null);
+            }
         }
 
-        // CTOR
-        emdDataManagerStructureService.list().$promise.then(function (data)
+        // METHODS
+        var loadItems = function ()
         {
-            $scope.items = data;
-            emdDataManagerStructureService.publishChange($scope.items, emdDataManagerHelpService.getFirstSelected($scope.items));
-        });
+            emdDataManagerStructureService.list().$promise.then(function (data)
+            {
+                $scope.items = data;
+                emdDataManagerStructureService.publishChange($scope.items, emdDataManagerHelpService.getFirstSelected($scope.items));
+            });
+        };
+
+        // CTOR
+        loadItems();
     });

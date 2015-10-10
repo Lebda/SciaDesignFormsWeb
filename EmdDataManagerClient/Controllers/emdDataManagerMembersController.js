@@ -25,6 +25,7 @@
             if (selectedStructure === null)
             {
                 $scope.items = null;
+                emdDataManagerMemberService.publishChange($scope.items, null);
             }
             else
             {
