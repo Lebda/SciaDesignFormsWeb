@@ -1,20 +1,22 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .controller("emdDataManagerUserFileRangesController", function ($scope, $resource, emdFileRangesRestFullApiUrl)
+    .controller("emdDataManagerUserFileRangesController", function ($scope, $resource, emdFileRangesRestFullApiUrl, emdEvent_STRUCTURE, emdEvent_STRUCTURE_DELETE, emdEvent_STRUCTURE_ADD)
     {
-        // EVENTS
-        $scope.$on("emdFileAddEvent", function (event, args)
-        { // read again from databse
-            $scope.listEmdRanges();
-        });
-        $scope.$on("emdFileDeleteEvent", function (event, args)
-        { // read again from databse
-            $scope.listEmdRanges(); 
-        });
+        // INTERFACE
         $scope.emdFileRangesResource = $resource(emdFileRangesRestFullApiUrl + "/:id", { id: "@id" });
         $scope.isRangeOk = true;
         $scope.emdFileRanges = null;
 
-        $scope.listEmdRanges = function ()
+        // EVENTS
+        $scope.$on(emdEvent_STRUCTURE, function (event, args)
+        {
+            if (args.type === emdEvent_STRUCTURE_ADD || args.type === emdEvent_STRUCTURE_DELETE)
+            {
+                listEmdRanges();
+            }
+        });
+
+        // METHODS
+        var listEmdRanges = function ()
         {
             $scope.emdFileRanges = $scope.emdFileRangesResource.query().$promise.then(
                 function (data)
@@ -24,5 +26,6 @@
                 });
         }
 
-        $scope.listEmdRanges();
+        // CTOR
+        listEmdRanges();
     })
