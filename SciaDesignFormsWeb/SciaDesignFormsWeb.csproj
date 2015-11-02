@@ -196,6 +196,8 @@
     <Compile Include="Areas\EmdDataManager\Controllers\EmdStructuresController.cs" />
     <Compile Include="Areas\EmdDataManager\Controllers\UIController.cs" />
     <Compile Include="Areas\EmdDataManager\EmdDataManagerAreaRegistration.cs" />
+    <Compile Include="Areas\SectionCheck\Controllers\SdfChecksController.cs" />
+    <Compile Include="Areas\SectionCheck\Controllers\SdfUserChecksController.cs" />
     <Compile Include="Areas\SectionCheck\Controllers\UIController.cs" />
     <Compile Include="Areas\SectionCheck\SectionCheckAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -212,7 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\EmdDataManager\Scripts\emdDataManagerApplicationModuleBootstrap.js" />
-    <Content Include="Areas\SectionCheck\Scripts\appSectionCheck.js" />
     <Content Include="Areas\SectionCheck\Scripts\sectionCheckApplicationModuleBootstrap.js" />
     <Content Include="Content\Backup\bootstrap.css" />
     <Content Include="Content\Backup\bootstrap.min.css" />
@@ -223,10 +224,19 @@
     <Content Include="Content\Bootswatch\SuperHero\bootstrap.css" />
     <Content Include="Content\Bootswatch\SuperHero\bootstrap.min.css" />
     <Content Include="Content\Backup\favicon.ico" />
-    <Content Include="Content\Images\img_1.gif" />
     <Content Include="Content\Images\scia-logo-rgb-PART.jpg" />
     <Content Include="Content\Images\scia-logo-rgb.jpg" />
     <Content Include="Content\Images\scia-logo-rgb_128.jpg" />
+    <Content Include="Content\Images\Scia-logo-RGB_PartFix.jpg" />
+    <Content Include="Content\Images\Slide01.jpg" />
+    <Content Include="Content\Images\Slide02.jpg" />
+    <Content Include="Content\Images\Slide03.jpg" />
+    <Content Include="Content\Images\Slide04.jpg" />
+    <Content Include="Content\Images\Slide05.jpg" />
+    <Content Include="Content\Images\Slide06.jpg" />
+    <Content Include="Content\Images\Slide07.jpg" />
+    <Content Include="Content\Images\Slide08.jpg" />
+    <Content Include="Content\Images\Slide09.jpg" />
     <Content Include="Content\Images\XEP_SectionCheck.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

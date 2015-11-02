@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
-using SciaDesignFormsModel.Abstract;
+using SciaDesignFormsModel.Abstract.Repositories;
 using SciaDesignFormsModel.ViewModels.EsaModelData;
 
 namespace SciaDesignFormsWeb.Areas.EmdDataManager.Controllers

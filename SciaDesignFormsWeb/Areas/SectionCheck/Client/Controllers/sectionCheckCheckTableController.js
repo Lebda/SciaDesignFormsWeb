@@ -2,8 +2,9 @@
 /// <reference path="c:\users\jlebduska\documents\visual studio 2013\projects\sciadesignformsweb\sectioncheckclient\viewmodels\checkviewmodel.js" />
 
 angular.module("sectionCheckApplicationModule")
-    .controller("sectionCheckCheckTableController", function ($scope, $http, calculationDataUrl)
+    .controller("sectionCheckCheckTableController", function ($scope, $http, sectionCheckSdfChecksService)
     {
+        $scope.checks = new Array();
         $scope.items = new Array();
         $scope.selectedRowIndex = -1;
         $scope.settings =
@@ -49,4 +50,16 @@ angular.module("sectionCheckApplicationModule")
         {
             $scope.items.length = 0;
         }
+
+        // METHODS
+        var loadItems = function ()
+        {
+            sectionCheckSdfChecksService.list().$promise.then(function (data)
+            {
+                $scope.checks = data;
+            });
+        };
+
+        // CTOR
+        loadItems();
     });

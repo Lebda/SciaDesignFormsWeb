@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
@@ -8,6 +10,7 @@ using Microsoft.Owin;
 using SciaDesignFormsModel.DataContexts.Identity;
 using SciaDesignFormsModel.Entities.Identity;
 using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
+using SciaDesignFormsModel.Entities.Identity.SdfCheck;
 using SciaDesignFormsModel.IndentityConfig;
 
 namespace SciaDesignFormsModel.Intializers.Indentity
@@ -18,7 +21,35 @@ namespace SciaDesignFormsModel.Intializers.Indentity
         {
             InitializeIdentityForEF();
             CreateFileRanges(context);
+            CreateSdfChecks(context);
             base.Seed(context);
+        }
+        public static void CreateSdfChecks(IdentityDb context)
+        {
+            var sdfChecks = new List<DbSdfCheck>
+            {
+                new DbSdfCheck { CheckName = "Check response - response", Version = "0.0.1" },
+                new DbSdfCheck { CheckName = "Check response - diagram", Version = "0.0.1" },
+                new DbSdfCheck { CheckName = "Check shear", Version = "0.0.1" },
+                new DbSdfCheck { CheckName = "Check torsion", Version = "0.0.1" }
+            };
+            sdfChecks.ForEach(s => context.SdfChecks.AddOrUpdate(p => p.ID, s));
+            context.SaveChanges();
+            IOwinContext owin = HttpContext.Current.GetOwinContext();
+            var userManager = owin.GetUserManager<ApplicationUserManager>();
+            if (userManager == null)
+            {
+                return;
+            }
+            ApplicationUser user = userManager.FindByName("admin@example.com");
+            var userCheckFirst = new DbSdfUserCheck { ApplicationUserID = user.Id, IsActive = true, SdfCheckID = context.SdfChecks.First().ID };
+            userCheckFirst.ApplicationUserID = user.Id;
+            context.SdfUserChecks.Add(userCheckFirst);
+            context.SaveChanges();
+            var userCheckLast = new DbSdfUserCheck { ApplicationUserID = user.Id, IsActive = true, SdfCheckID = context.SdfChecks.ToList().Last().ID };
+            userCheckLast.ApplicationUserID = user.Id;
+            context.SdfUserChecks.Add(userCheckLast);
+            context.SaveChanges();
         }
         public static void CreateFileRanges(IdentityDb context)
         {

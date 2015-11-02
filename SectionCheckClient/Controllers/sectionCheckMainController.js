@@ -9,4 +9,8 @@
         {
             return sectionCheckClientFolder + 'Views/sectionCheckCheckTableView.html';
         };
+        $scope.userSelectionView = function ()
+        {
+            return sectionCheckClientFolder + 'Views/sectionCheckEmdUserSelectionView.html';
+        };
     });

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Ninject;
-using SciaDesignFormsModel.Abstract;
 using SciaDesignFormsModel.Abstract.EmdFile;
-using SciaDesignFormsModel.Concrete;
+using SciaDesignFormsModel.Abstract.Repositories;
 using SciaDesignFormsModel.Concrete.EmdFile;
+using SciaDesignFormsModel.Concrete.Repositories;
 
 namespace SciaDesignFormsModel.Module
 {
@@ -23,6 +23,8 @@ namespace SciaDesignFormsModel.Module
             ninjectKernel.Bind<IDbEmdMemberRepository>().To<DbEmdMemberRepository>();
             ninjectKernel.Bind<IDbEmdStructureRepository>().To<DbEmdStructureRepository>();
             ninjectKernel.Bind<IDbEmdFileRangeRepository>().To<DbEmdFileRangeRepository>();
+            ninjectKernel.Bind<IDbSdfChecksRepository>().To<DbSdfChecksRepository>();
+            ninjectKernel.Bind<IDbSdfUserChecksRepository>().To<DbSdfUserChecksRepository>();
         }
     }
 }

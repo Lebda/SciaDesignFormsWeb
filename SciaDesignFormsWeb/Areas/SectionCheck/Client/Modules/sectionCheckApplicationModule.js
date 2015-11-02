@@ -1,4 +1,4 @@
-﻿angular.module("sectionCheckApplicationModule", []);
+﻿angular.module("sectionCheckApplicationModule", ['ngResource']);
 
 function generateUUID()
 {

@@ -1,5 +1,4 @@
 ﻿angular.module("emdDataManagerApplicationModule")
-    .constant("emdSelectionsRestFullApiUrl", '/EmdDataManager/api/EmdSelections')
     .constant("emdActiveStructureRestFullApiUrl", '/EmdDataManager/api/EmdActiveStructure')
     .constant("emdFileRangesRestFullApiUrl", '/EmdDataManager/api/EmdFileRanges')
     .constant("emdMembersNonRestFullApiUrl", '/EmdDataManager/api/nrest/EmdMembers')

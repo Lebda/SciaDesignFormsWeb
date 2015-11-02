@@ -6,6 +6,7 @@ using SciaDesignFormsModel.Entities.Identity;
 using SciaDesignFormsModel.Entities.Identity.DbFiles;
 using SciaDesignFormsModel.Entities.Identity.EmdFileRanges;
 using SciaDesignFormsModel.Entities.Identity.EmdFileStructure;
+using SciaDesignFormsModel.Entities.Identity.SdfCheck;
 using SciaDesignFormsModel.Intializers.Indentity;
 
 namespace SciaDesignFormsModel.DataContexts.Identity
@@ -23,6 +24,8 @@ namespace SciaDesignFormsModel.DataContexts.Identity
         public DbSet<DbEmdMember> Members { get; set; }
         public DbSet<DbEmdSection> Sections { get; set; }
         public DbSet<DbEmdFileRange> FileRanges { get; set; }
+        public DbSet<DbSdfCheck> SdfChecks { get; set; }
+        public DbSet<DbSdfUserCheck> SdfUserChecks { get; set; }
         #endregion
         
         #region STATIC
@@ -55,12 +58,32 @@ namespace SciaDesignFormsModel.DataContexts.Identity
                         .HasRequired(c => c.ApplicationUser)
                         .WithMany()
                         .WillCascadeOnDelete(false);
+            // ONE-TO-MANY --> DbSdfUserCheck
+            modelBuilder.Entity<DbSdfUserCheck>()
+                        .HasRequired(c => c.ApplicationUser)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
             // ONE-TO-ONE --> DbEmdFileRange
             modelBuilder.Entity<DbEmdFileRange>()
                         .HasRequired(t => t.ApplicationUser)
                         .WithOptional();
+            // MANY-TO-MANY --> DbSdfCheck | example
+            //modelBuilder.Entity<DbSdfCheck>()
+            //            .HasMany(t => t.ApplicationUsers)
+            //            .WithMany()
+            //            .Map(m =>
+            //            { 
+            //                m.ToTable("DbSdfCheckApplicationUser");
+            //                m.MapLeftKey("CheckID"); 
+            //                m.MapRightKey("Id"); 
+            //            });
             ////***********ApplicationUser********** 
             
+            // ONE-TO-MANY DbSdfUserCheck & DbSdfCheck
+            modelBuilder.Entity<DbSdfCheck>()
+                        .HasMany<DbSdfUserCheck>(t => t.UserChecks)
+                        .WithRequired(t => t.SdfCheck)
+                        .HasForeignKey(t => t.SdfCheckID); 
             
             // ONE-TO-ONE DbEmdStructure & DbEmdFile
             modelBuilder.Entity<DbEmdFile>()

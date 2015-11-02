@@ -4,14 +4,38 @@
 }
 @section scripts
 {
+    @*DEPENDENCY*@
+    @*DEPENDENCY*@
+
+    @*BOOTSTRAP*@
     <script src="~/Areas/SectionCheck/Client/Modules/sectionCheckApplicationModule.js"></script>
     <script src="~/Areas/SectionCheck/Scripts/sectionCheckApplicationModuleBootstrap.js"></script>
+    @*BOOTSTRAP*@
+
+    @*VIEW MODELS*@
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckEmdUserSelectionViewModel.js"></script>
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCheckViewModel.js"></script>
+    @*VIEW MODELS*@
+
+    @*SERVICES*@
+    <script src="~/Areas/SectionCheck/Client/Services/sectionCheckSdfChecksService.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Services/sectionCheckEmdSelectionService.js"></script>
+    @*SERVICES*@
+
+    @*MAIN OBJECT*@
     <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckApplicationController.js"></script>
     <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckMainController.js"></script>
+    @*MAIN OBJECT*@
+
+    @*CONTROLLERS*@
     <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCalculationContext.js"></script>
-    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCheckViewModel.js"></script>
     <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckDocumentController.js"></script>
     <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckCheckTableController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckEmdUserSelectionController.js"></script>
+    @*CONTROLLERS*@
+
+    @*APPLICATION END*@
+    @*APPLICATION END*@
 }
 
 @Html.Action("ClientIntegrationPartial", "UI")

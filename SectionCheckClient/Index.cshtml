@@ -5,28 +5,37 @@
 
 @section scripts
 {
-    <script src="~/Areas/SectionCheck/Views/UI/AppStart/sectionCheckApplicationModule.js"></script>
-    @*<script src="~/Areas/SectionCheck/Views/UI/Controllers/sectionCheckApplicationController.js"></script>*@ 
-    @*<link href="~/Scripts/Kendo/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="~/Scripts/Kendo/styles/kendo.blueopal.min.css" rel="stylesheet" />
-    <script src="~/Scripts/Kendo/js/kendo.all.min.js"></script>*@
+    @*DEPENDENCY*@
+    @*DEPENDENCY*@
 
-    @*UI grid*@
-    @*<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
-    <script src="http://ui-grid.info/release/ui-grid.js"></script>
-    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
-    <link href="~/Areas/SectionCheck/Client/main.css" rel="stylesheet" />*@
+    @*BOOTSTRAP*@
+    <script src="~/Areas/SectionCheck/Client/Modules/sectionCheckApplicationModule.js"></script>
+    <script src="~/Areas/SectionCheck/Scripts/sectionCheckApplicationModuleBootstrap.js"></script>
+    @*BOOTSTRAP*@
 
-    @*Section check client*@
-    @*<script src="~/Areas/SectionCheck/Scripts/appSectionCheck.js"></script>
-    <script src="~/Areas/SectionCheck/Client/mainController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/calculationContext.js"></script>
-    <script src="~/Areas/SectionCheck/Client/checkViewModel.js"></script>
-    <script src="~/Areas/SectionCheck/Client/documentController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/kendoTestController.js"></script>
-    <script src="~/Areas/SectionCheck/Client/checkTableController.js"></script>*@
+    @*VIEW MODELS*@
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckEmdUserSelectionViewModel.js"></script>
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCheckViewModel.js"></script>
+    @*VIEW MODELS*@
+
+    @*SERVICES*@
+    <script src="~/Areas/SectionCheck/Client/Services/sectionCheckEmdSelectionService.js"></script>
+    @*SERVICES*@
+
+    @*MAIN OBJECT*@
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckApplicationController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckMainController.js"></script>
+    @*MAIN OBJECT*@
+
+    @*CONTROLLERS*@
+    <script src="~/Areas/SectionCheck/Client/ViewModels/sectionCheckCalculationContext.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckDocumentController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckCheckTableController.js"></script>
+    <script src="~/Areas/SectionCheck/Client/Controllers/sectionCheckEmdUserSelectionController.js"></script>
+    @*CONTROLLERS*@
+
+    @*APPLICATION END*@
+    @*APPLICATION END*@
 }
 
 @*@Html.Action("ClientIntegrationPartial", "UI")*@

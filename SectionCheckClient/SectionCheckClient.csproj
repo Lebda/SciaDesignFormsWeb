@@ -44,10 +44,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Controllers\sectionCheckEmdUserSelectionController.js" />
     <Content Include="Modules\sectionCheckApplicationModule.js" />
     <Content Include="Content\main.css" />
     <Content Include="Controllers\sectionCheckCheckTableController.js" />
@@ -55,8 +54,12 @@
     <Content Include="Controllers\sectionCheckMainController.js" />
     <Content Include="Controllers\sectionCheckApplicationController.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Services\sectionCheckSdfChecksService.js" />
+    <Content Include="Services\sectionCheckEmdSelectionService.js" />
+    <Content Include="ViewModels\sectionCheckEmdUserSelectionViewModel.js" />
     <Content Include="ViewModels\sectionCheckCalculationContext.js" />
     <Content Include="ViewModels\sectionCheckCheckViewModel.js" />
+    <Content Include="Views\sectionCheckEmdUserSelectionView.html" />
     <Content Include="Views\sectionCheckCheckTableView.html" />
     <Content Include="Views\sectionCheckMainView.html" />
     <Content Include="Views\sectionCheckDocumentView.html" />
@@ -94,7 +97,10 @@ if not exist "$(ProjectDir)bin\Client\ViewModels" mkdir "$(ProjectDir)bin\Client
 xcopy "$(ProjectDir)ViewModels\*.*" "$(ProjectDir)bin\Client\ViewModels" /Y/D/E
 
 if not exist "$(ProjectDir)bin\Client\Views" mkdir "$(ProjectDir)bin\Client\Views"
-xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client\Views" /Y/D/E</PreBuildEvent>
+xcopy "$(ProjectDir)Views\*.*" "$(ProjectDir)bin\Client\Views" /Y/D/E
+
+if not exist "$(ProjectDir)bin\Client\Services" mkdir "$(ProjectDir)bin\Client\Services"
+xcopy "$(ProjectDir)Services\*.*" "$(ProjectDir)bin\Client\Services" /Y/D/E</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

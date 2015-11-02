@@ -20,7 +20,6 @@
 </style>
     
 <div ng-controller="sectionCheckCheckTableController">
-    <br />
     <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">Available checks</div>
@@ -60,6 +59,35 @@
                     </td>
                     <td>
                         <span class="label label-danger">{{item.checkValue}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        Prdel
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr id="headRow">
+                    <td>
+                        #
+                    </td>
+                    <td>
+                        Check name
+                    </td>
+                    <td>
+                        Check value
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in checks">
+                    <td>
+                        prdel
+                    </td>
+                    <td>
+                        {{item.CheckName}}
+                    </td>
+                    <td>
+                        prdel
                     </td>
                 </tr>
             </tbody>
